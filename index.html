@@ -1,31 +1,34 @@
 <!DOCTYPE html>
 <!--
   ============================================================
-  MPD WEBSITE — IMAGE REFERENCE GUIDE
+  MPD WEBSITE — IMAGE GUIDE
   ============================================================
-  All images go in the SAME FOLDER as this HTML file.
-  No subfolders needed. Your GitHub repo should look like:
+  All images are PRE-WIRED. Just drop these files into the
+  SAME FOLDER as this HTML file and they'll appear automatically.
+  No code editing needed. Rename this file to index.html.
+
+  Your GitHub repo should look like:
 
   your-repo/
-  ├── index.html          (rename this file to index.html)
-  ├── badge.png           (department badge/logo)
-  ├── hero-1.jpg          (hero slider image 1)
-  ├── hero-2.jpg          (hero slider image 2)
-  ├── hero-3.jpg          (hero slider image 3)
-  ├── hero-4.jpg          (hero slider image 4)
-  ├── chief.jpg           (chief photo or video thumbnail)
-  ├── cta-join.jpg        (join the team background)
-  ├── cta-divisions.jpg   (divisions CTA background)
-  ├── miami.jpg           (Miami jurisdiction photo)
-  ├── ftl.jpg             (Fort Lauderdale photo)
-  ├── boynton.jpg         (Boynton Beach photo)
-  ├── gallery-1.jpg       (gallery photo 1)
-  ├── gallery-2.jpg       (gallery photo 2)
-  ├── gallery-3.jpg       (gallery photo 3)
-  └── gallery-4.jpg       (gallery photo 4)
+  ├── index.html           (this file)
+  ├── badge.png            (nav + footer badge/logo)
+  ├── hero-1.jpg           (hero slider slide 1)
+  ├── hero-2.jpg           (hero slider slide 2)
+  ├── hero-3.jpg           (hero slider slide 3)
+  ├── hero-4.jpg           (hero slider slide 4)
+  ├── chief.jpg            (chief photo/video thumbnail)
+  ├── cta-join.jpg         (join the team CTA background)
+  ├── cta-divisions.jpg    (divisions CTA background)
+  ├── miami.jpg            (Miami jurisdiction photo)
+  ├── ftl.jpg              (Fort Lauderdale photo)
+  ├── boynton.jpg          (Boynton Beach photo)
+  ├── gallery-1.jpg        (gallery photo 1)
+  ├── gallery-2.jpg        (gallery photo 2)
+  ├── gallery-3.jpg        (gallery photo 3)
+  └── gallery-4.jpg        (gallery photo 4)
 
-  TO ADD AN IMAGE: Search this file for the filename above
-  (e.g. "hero-1.jpg") and uncomment/replace the placeholder.
+  Missing images will gracefully hide or show the dark
+  navy fallback — no broken image icons.
   ============================================================
 -->
 <html lang="en">
@@ -130,7 +133,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   display:flex;align-items:center;justify-content:center;
   font-family:var(--ff-display);font-size:16px;font-weight:700;color:var(--navy-deep);
   box-shadow:0 0 20px rgba(200,168,76,0.2);
-  /* To add badge: Replace the nav-badge-icon div content with: <img src="badge.png" style="width:56px;height:56px;border-radius:50%;object-fit:cover;"> */
 }
 .nav-badge-text{line-height:1.15;}
 .nav-badge-text strong{
@@ -229,7 +231,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .hero-slide-bg{
   position:absolute;inset:0;
   background:linear-gradient(135deg,var(--navy-mid),var(--navy-light));
-  /* To add hero images: On each .hero-slide-bg div, add style="background: url('hero-1.jpg') center/cover no-repeat;" */
 }
 .hero-slide-bg::after{
   content:'';position:absolute;inset:0;
@@ -362,7 +363,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   height:280px;position:relative;overflow:hidden;
   background:linear-gradient(135deg,var(--navy-light),var(--navy-lighter));
   display:flex;align-items:center;justify-content:center;
-  /* To add chief photo: Add style="background: url('chief.jpg') center/cover no-repeat;" to .chief-card-img div */
 }
 .chief-card-img .play-btn{
   width:64px;height:64px;border-radius:50%;
@@ -388,7 +388,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 @media(max-width:800px){.cta-grid{grid-template-columns:1fr;}}
 .cta-card{
   position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:2.5rem;
-  /* To add CTA backgrounds: Add style="background: url('cta-join.jpg') center/cover no-repeat;" to .cta-card-bg divs */
 }
 .cta-card-bg{
   position:absolute;inset:0;
@@ -721,8 +720,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 <nav class="main-nav">
   <div class="nav-container">
     <div class="nav-badge" onclick="navigate('home')">
-      <div class="nav-badge-icon">MPD
-        <!-- TO ADD BADGE: Replace "MPD" text above with: <img src="badge.png" style="width:56px;height:56px;border-radius:50%;object-fit:cover;"> -->
+      <div class="nav-badge-icon" style="background:none;overflow:hidden;">
+        <img src="badge.png" style="width:56px;height:56px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,var(--gold),var(--gold-dim))';this.parentElement.innerHTML='MPD';">
       </div>
       <div class="nav-badge-text">
         <strong>Municipal Police Dept.</strong>
@@ -771,36 +770,28 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   <!-- Hero Slider -->
   <div class="hero-slider" id="heroSlider">
     <div class="hero-slide active">
-      <div class="hero-slide-bg">
-        <!-- TO ADD: Add style="background:url('hero-1.jpg') center/cover no-repeat;" to the div above -->
-      </div>
+      <div class="hero-slide-bg" style="background:url('hero-1.jpg') center/cover no-repeat;"></div>
       <div class="hero-slide-content">
         <h2>Commitment to Leadership</h2>
         <p>"Integrity in all we say and do"</p>
       </div>
     </div>
     <div class="hero-slide">
-      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#131b2e,#1a2540);">
-        <!-- TO ADD: Replace the style above with: style="background:url('hero-2.jpg') center/cover no-repeat;" -->
-      </div>
+      <div class="hero-slide-bg" style="background:url('hero-2.jpg') center/cover no-repeat;"></div>
       <div class="hero-slide-content">
         <h2>Service to Our Community</h2>
         <p>"Dedicated to the pursuit of excellence"</p>
       </div>
     </div>
     <div class="hero-slide">
-      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#162035,#0f1928);">
-        <!-- TO ADD: Replace the style above with: style="background:url('hero-3.jpg') center/cover no-repeat;" -->
-      </div>
+      <div class="hero-slide-bg" style="background:url('hero-3.jpg') center/cover no-repeat;"></div>
       <div class="hero-slide-content">
         <h2>Respect for People</h2>
         <p>"Community stewardship and public safety"</p>
       </div>
     </div>
     <div class="hero-slide">
-      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#111a2a,#1a2b45);">
-        <!-- TO ADD: Replace the style above with: style="background:url('hero-4.jpg') center/cover no-repeat;" -->
-      </div>
+      <div class="hero-slide-bg" style="background:url('hero-4.jpg') center/cover no-repeat;"></div>
       <div class="hero-slide-content">
         <h2>Quality Through Continuous Improvement</h2>
         <p>"An elevated standard of policing"</p>
@@ -890,8 +881,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
         <!-- Right: Chief / Video -->
         <div>
           <div class="chief-card">
-            <div class="chief-card-img">
-              <!-- TO ADD: Add style="background:url('chief.jpg') center/cover no-repeat;" to the div above -->
+            <div class="chief-card-img" style="background:url('chief.jpg') center/cover no-repeat;">
               <div class="play-btn">▶</div>
             </div>
             <div class="chief-card-body">
@@ -913,9 +903,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   <!-- CTA Cards: Join + Documents -->
   <div class="cta-grid">
     <div class="cta-card">
-      <div class="cta-card-bg">
-        <!-- TO ADD: Add style="background:url('cta-join.jpg') center/cover no-repeat;" to the div above -->
-      </div>
+      <div class="cta-card-bg" style="background:url('cta-join.jpg') center/cover no-repeat;"></div>
       <div class="cta-card-content">
         <h3>Join the Team</h3>
         <p>There are countless ways to serve with the Municipal Police Department across three jurisdictions.</p>
@@ -923,9 +911,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       </div>
     </div>
     <div class="cta-card">
-      <div class="cta-card-bg" style="background:linear-gradient(135deg,#0f1928,#1a2b45);">
-        <!-- TO ADD: Replace the style above with: style="background:url('cta-divisions.jpg') center/cover no-repeat;" -->
-      </div>
+      <div class="cta-card-bg" style="background:url('cta-divisions.jpg') center/cover no-repeat;"></div>
       <div class="cta-card-content">
         <h3>Our Divisions</h3>
         <p>From SWAT to K-9, Marine to Aviation — explore the specialized units of the MPD.</p>
@@ -1002,20 +988,17 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       <div class="section-header section-header-center"><h2>Jurisdictions</h2><div class="gold-line"></div><p>The Municipal Police Department operates across three major jurisdictions</p></div>
       <div class="card-grid card-grid-3">
         <div class="card" style="text-align:center;">
-          <!-- TO ADD: Replace the div below with: <img src="miami.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:1.25rem;"> -->
-          <div class="img-ph" style="min-height:150px;margin-bottom:1.25rem;">Miami PD Image</div>
+          <img src="miami.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:1.25rem;" onerror="this.style.display='none';">
           <h3>Miami Police Department</h3>
           <p>Primary patrol jurisdiction covering the City of Miami and surrounding metropolitan areas.</p>
         </div>
         <div class="card" style="text-align:center;">
-          <!-- TO ADD: Replace the div below with: <img src="ftl.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:1.25rem;"> -->
-          <div class="img-ph" style="min-height:150px;margin-bottom:1.25rem;">Fort Lauderdale Image</div>
+          <img src="ftl.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:1.25rem;" onerror="this.style.display='none';">
           <h3>Fort Lauderdale PD</h3>
           <p>Serving the Fort Lauderdale community with dedicated patrol and investigative operations.</p>
         </div>
         <div class="card" style="text-align:center;">
-          <!-- TO ADD: Replace the div below with: <img src="boynton.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:1.25rem;"> -->
-          <div class="img-ph" style="min-height:150px;margin-bottom:1.25rem;">Boynton Beach Image</div>
+          <img src="boynton.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin-bottom:1.25rem;" onerror="this.style.display='none';">
           <h3>Boynton Beach PD</h3>
           <p>Providing comprehensive law enforcement services to the Boynton Beach community.</p>
         </div>
@@ -1027,14 +1010,10 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
     <div class="section-inner">
       <div class="section-header section-header-center"><h2>Gallery</h2><div class="gold-line"></div></div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;">
-        <!-- TO ADD: Replace each div below with: <img src="gallery-1.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;"> -->
-        <div class="img-ph">Gallery Image 1</div>
-        <!-- TO ADD: <img src="gallery-2.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;"> -->
-        <div class="img-ph">Gallery Image 2</div>
-        <!-- TO ADD: <img src="gallery-3.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;"> -->
-        <div class="img-ph">Gallery Image 3</div>
-        <!-- TO ADD: <img src="gallery-4.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;"> -->
-        <div class="img-ph">Gallery Image 4</div>
+        <img src="gallery-1.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" onerror="this.style.display='none';">
+        <img src="gallery-2.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" onerror="this.style.display='none';">
+        <img src="gallery-3.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" onerror="this.style.display='none';">
+        <img src="gallery-4.jpg" style="width:100%;height:200px;object-fit:cover;border-radius:8px;" onerror="this.style.display='none';">
       </div>
     </div>
   </section>
@@ -1399,7 +1378,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   <div class="footer-top">
     <div>
       <div class="footer-brand">
-        <div class="footer-brand-badge">MPD</div>
+        <div class="footer-brand-badge" style="overflow:hidden;">
+          <img src="badge.png" style="width:48px;height:48px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='MPD';">
+        </div>
         <div class="footer-brand-text">
           <h4>Municipal Police Department</h4>
           <p>Serving Miami, Fort Lauderdale & Boynton Beach within the state of Florida.</p>
