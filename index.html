@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Municipal Police Department — Official Site</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Libre+Franklin:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy-darkest: #0a0e17;
+  --navy-deep: #0d1321;
+  --navy-mid: #131b2e;
+  --navy-light: #1a2540;
+  --navy-lighter: #243054;
+  --gold: #c8a84c;
+  --gold-light: #dfc477;
+  --gold-dim: #9a7d33;
+  --gold-glow: rgba(200,168,76,0.12);
+  --blue: #2d6cce;
+  --blue-light: #4d8ef0;
+  --blue-dark: #1a4a8f;
+  --white: #f0ece4;
+  --white-pure: #ffffff;
+  --text-primary: #e8e4dc;
+  --text-secondary: #9aa4b8;
+  --text-dim: #5c6a82;
+  --border: rgba(200,168,76,0.15);
+  --border-light: rgba(255,255,255,0.08);
+  --card-bg: rgba(13,19,33,0.7);
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --ff-display: 'Oswald', sans-serif;
+  --ff-body: 'Libre Franklin', sans-serif;
+  --ff-serif: 'Playfair Display', serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--ff-body);background:var(--navy-darkest);color:var(--text-primary);line-height:1.6;overflow-x:hidden;}
+a{color:var(--gold);text-decoration:none;transition:color var(--transition);}
+a:hover{color:var(--gold-light);}
+img{max-width:100%;display:block;}
+h1,h2,h3,h4,h5{font-family:var(--ff-display);}
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--navy-darkest);}
+::-webkit-scrollbar-thumb{background:var(--navy-lighter);border-radius:4px;}
+
+/* Grid pattern overlay */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse at 30% 0%,rgba(45,108,206,0.04) 0%,transparent 50%),
+    radial-gradient(ellipse at 70% 100%,rgba(200,168,76,0.03) 0%,transparent 50%);
+}
+
+/* ========== UTILITY BAR ========== */
+.utility-bar{
+  background:#000;
+  padding:6px 2rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
+  position:relative;
+  z-index:1001;
+  border-bottom:1px solid rgba(200,168,76,0.2);
+}
+.utility-bar a{color:var(--gold);font-weight:600;letter-spacing:0.03em;}
+.utility-bar span{color:var(--text-secondary);font-size:11px;}
+@media(max-width:600px){.utility-bar{flex-direction:column;gap:4px;text-align:center;padding:8px 1rem;}}
+
+/* ========== MAIN NAV ========== */
+.main-nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(10,14,23,0.95);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:var(--transition);
+}
+.nav-container{
+  max-width:1400px;
+  margin:0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 2rem;
+  height:80px;
+}
+.nav-badge{
+  display:flex;
+  align-items:center;
+  gap:16px;
+  cursor:pointer;
+  flex-shrink:0;
+}
+.nav-badge-icon{
+  width:56px;height:56px;
+  background:linear-gradient(135deg,var(--gold),var(--gold-dim));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-display);font-size:16px;font-weight:700;color:var(--navy-deep);
+  box-shadow:0 0 20px rgba(200,168,76,0.2);
+  /* IMAGE PLACEHOLDER: Replace with <img src="your-badge.png" style="width:56px;height:56px;border-radius:50%;object-fit:cover;"> */
+}
+.nav-badge-text{line-height:1.15;}
+.nav-badge-text strong{
+  font-family:var(--ff-display);font-size:17px;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--white);display:block;
+}
+.nav-badge-text span{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);}
+
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-menu>li{position:relative;}
+.nav-menu>li>a,.nav-menu>li>.nav-trigger{
+  display:flex;align-items:center;gap:4px;
+  padding:10px 18px;
+  font-family:var(--ff-display);font-size:14px;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text-secondary);cursor:pointer;transition:var(--transition);
+  background:none;border:none;
+}
+.nav-menu>li>a:hover,.nav-menu>li>.nav-trigger:hover,.nav-menu>li>a.active{color:var(--gold);}
+.nav-menu>li>a.active::after{content:'';position:absolute;bottom:0;left:18px;right:18px;height:2px;background:var(--gold);}
+.nav-arrow{font-size:8px;margin-left:2px;transition:transform var(--transition);}
+.nav-menu>li:hover .nav-arrow{transform:rotate(180deg);}
+
+/* Mega dropdown */
+.mega-dropdown{
+  position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);
+  min-width:520px;
+  background:rgba(13,19,33,0.98);backdrop-filter:blur(20px);
+  border:1px solid var(--border);border-radius:8px;
+  padding:1.5rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;
+  opacity:0;visibility:hidden;
+  transition:var(--transition);
+  box-shadow:0 12px 40px rgba(0,0,0,0.5);
+}
+.nav-menu>li:hover .mega-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.mega-dropdown a{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;border-radius:6px;
+  font-family:var(--ff-body);font-size:13px;color:var(--text-secondary);
+  transition:var(--transition);
+}
+.mega-dropdown a:hover{background:var(--gold-glow);color:var(--gold);}
+.mega-dropdown .mega-icon{
+  width:32px;height:32px;border-radius:6px;
+  background:rgba(200,168,76,0.1);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;
+}
+.mega-dropdown .mega-featured{
+  grid-column:1/-1;padding:14px;border-radius:8px;
+  background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));
+  border:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;margin-bottom:0.5rem;
+}
+.mega-dropdown .mega-featured .mega-icon{width:40px;height:40px;font-size:18px;background:var(--gold-glow);border-color:var(--gold-dim);}
+.mega-dropdown .mega-featured span{font-weight:600;color:var(--white);font-size:14px;}
+
+/* Mobile toggle */
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}
+.nav-toggle span{display:block;width:26px;height:2px;background:var(--text-secondary);transition:var(--transition);}
+@media(max-width:1100px){
+  .nav-toggle{display:flex;}
+  .nav-menu{
+    position:fixed;top:0;right:0;bottom:0;width:320px;
+    background:rgba(10,14,23,0.99);backdrop-filter:blur(20px);
+    flex-direction:column;align-items:stretch;padding:80px 1.5rem 2rem;
+    transform:translateX(100%);transition:var(--transition);
+    border-left:1px solid var(--border);z-index:9999;
+    overflow-y:auto;gap:0;
+  }
+  .nav-menu.open{transform:translateX(0);}
+  .nav-menu>li>a,.nav-menu>li>.nav-trigger{padding:14px 0;font-size:15px;}
+  .mega-dropdown{
+    position:static;opacity:1;visibility:visible;transform:none;
+    min-width:auto;background:transparent;border:none;box-shadow:none;
+    padding:0 0 0 16px;backdrop-filter:none;grid-template-columns:1fr;
+  }
+  .mega-dropdown .mega-featured{display:none;}
+  .mobile-close{position:absolute;top:20px;right:20px;background:none;border:none;color:var(--text-secondary);font-size:28px;cursor:pointer;}
+}
+
+/* ========== PAGES ========== */
+.page{display:none;position:relative;z-index:1;min-height:100vh;}
+.page.active{display:block;animation:fadeUp 0.35s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+
+/* ========== HERO SLIDER ========== */
+.hero-slider{
+  position:relative;height:75vh;min-height:500px;overflow:hidden;
+}
+.hero-slide{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity 1s ease;
+}
+.hero-slide.active{opacity:1;z-index:2;}
+.hero-slide-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--navy-mid),var(--navy-light));
+  /* IMAGE PLACEHOLDER: Each slide should have a background image:
+     background: url('images/slide-1.jpg') center/cover no-repeat; */
+}
+.hero-slide-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,14,23,0.3) 0%,rgba(10,14,23,0.7) 60%,rgba(10,14,23,0.95) 100%);
+}
+.hero-slide-content{
+  position:relative;z-index:2;text-align:center;padding:2rem;max-width:800px;
+}
+.hero-slide-content h2{
+  font-family:var(--ff-display);font-size:clamp(2rem,4.5vw,3.5rem);font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--white);
+  text-shadow:0 2px 30px rgba(0,0,0,0.4);margin-bottom:0.5rem;
+}
+.hero-slide-content p{
+  font-family:var(--ff-serif);font-size:clamp(1rem,2vw,1.3rem);font-style:italic;
+  color:var(--gold-light);
+}
+.hero-dots{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:10;
+  display:flex;gap:10px;
+}
+.hero-dot{
+  width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);background:transparent;
+  cursor:pointer;transition:var(--transition);
+}
+.hero-dot.active{background:var(--gold);}
+
+/* Motto overlay */
+.hero-motto{
+  position:absolute;bottom:0;left:0;right:0;z-index:5;
+  text-align:center;padding:2rem;
+  background:linear-gradient(180deg,transparent,rgba(10,14,23,0.95));
+}
+.hero-motto h1{
+  font-family:var(--ff-serif);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;font-style:italic;
+  color:var(--gold-light);letter-spacing:0.02em;
+}
+
+/* ========== QUICKLINKS BAR ========== */
+.quicklinks-bar{
+  background:var(--navy-mid);border-top:2px solid var(--gold);border-bottom:1px solid var(--border-light);
+  padding:0;
+}
+.quicklinks-inner{
+  max-width:1400px;margin:0 auto;
+  display:flex;align-items:stretch;
+}
+.quicklink-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  padding:1.25rem 1rem;cursor:pointer;transition:var(--transition);
+  border-right:1px solid var(--border-light);text-align:center;
+}
+.quicklink-item:last-child{border-right:none;}
+.quicklink-item:hover{background:var(--gold-glow);}
+.quicklink-item .ql-icon{font-size:24px;}
+.quicklink-item .ql-label{
+  font-family:var(--ff-display);font-size:11px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--text-secondary);
+  transition:var(--transition);
+}
+.ql-icon:empty{display:none;}
+.mega-icon:empty{display:none;}
+.div-icon:empty{display:none;}
+.v-icon:empty{display:none;}
+.ph-i:empty{display:none;}
+.contact-icon:empty{width:0;height:0;padding:0;border:none;background:none;margin:0;min-width:0;}
+.quicklink-item:hover .ql-label{color:var(--gold);}
+@media(max-width:768px){
+  .quicklinks-inner{flex-wrap:wrap;}
+  .quicklink-item{flex:0 0 33.33%;border-bottom:1px solid var(--border-light);}
+}
+
+/* ========== SECTION BASE ========== */
+.section{padding:4.5rem 2rem;position:relative;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-dark{background:rgba(0,0,0,0.2);}
+.section-header{margin-bottom:3rem;}
+.section-header h2{
+  font-size:clamp(1.5rem,2.5vw,2rem);font-weight:600;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--white);
+}
+.section-header .gold-line{width:50px;height:3px;background:var(--gold);margin-top:12px;}
+.section-header p{color:var(--text-secondary);margin-top:12px;font-size:0.95rem;max-width:600px;}
+
+.section-header-center{text-align:center;}
+.section-header-center .gold-line{margin:12px auto 0;}
+.section-header-center p{margin:12px auto 0;}
+
+/* ========== NEWSROOM / EVENTS TABS ========== */
+.news-section{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+@media(max-width:900px){.news-section{grid-template-columns:1fr;}}
+
+.news-tabs{display:flex;gap:0;margin-bottom:1.5rem;}
+.news-tab{
+  padding:10px 24px;font-family:var(--ff-display);font-size:13px;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--text-dim);cursor:pointer;
+  border-bottom:2px solid transparent;transition:var(--transition);
+  background:none;border-top:none;border-left:none;border-right:none;
+}
+.news-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.news-tab:hover{color:var(--text-primary);}
+
+.news-panel{display:none;}
+.news-panel.active{display:block;}
+
+.news-item{
+  padding:1rem 0;border-bottom:1px solid var(--border-light);
+  transition:var(--transition);cursor:pointer;
+}
+.news-item:hover{padding-left:8px;}
+.news-item h4{
+  font-family:var(--ff-body);font-size:0.95rem;font-weight:600;color:var(--white);
+  margin-bottom:4px;line-height:1.4;
+}
+.news-item .news-date{font-size:0.8rem;color:var(--gold-dim);font-family:var(--ff-display);letter-spacing:0.05em;}
+.news-view-all{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:1.5rem;font-family:var(--ff-display);font-size:13px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--gold);
+}
+.news-view-all:hover{color:var(--gold-light);}
+.news-view-all::after{content:'→';}
+
+/* Chief video card */
+.chief-card{
+  background:var(--navy-mid);border:1px solid var(--border);border-radius:10px;overflow:hidden;
+}
+.chief-card-img{
+  height:280px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--navy-light),var(--navy-lighter));
+  display:flex;align-items:center;justify-content:center;
+  /* IMAGE PLACEHOLDER: Chief message/video thumbnail image */
+}
+.chief-card-img .play-btn{
+  width:64px;height:64px;border-radius:50%;
+  background:rgba(200,168,76,0.9);
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;color:var(--navy-deep);
+  transition:var(--transition);cursor:pointer;
+}
+.chief-card-img .play-btn:hover{transform:scale(1.1);background:var(--gold-light);}
+.chief-card-img .ph-text{
+  position:absolute;bottom:16px;right:16px;
+  font-size:10px;color:var(--text-dim);font-family:var(--ff-display);letter-spacing:0.1em;text-transform:uppercase;
+}
+.chief-card-body{padding:1.25rem 1.5rem;}
+.chief-card-body h3{
+  font-size:0.95rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--text-secondary);
+}
+.chief-card-body p{font-size:1rem;color:var(--gold);font-weight:600;margin-top:4px;}
+
+/* ========== CTA SIDE-BY-SIDE ========== */
+.cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:380px;}
+@media(max-width:800px){.cta-grid{grid-template-columns:1fr;}}
+.cta-card{
+  position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:2.5rem;
+  /* IMAGE PLACEHOLDER: Background images for CTA cards */
+}
+.cta-card-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--navy-mid),var(--navy-light));
+}
+.cta-card-bg::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(10,14,23,0.2) 0%,rgba(10,14,23,0.85) 100%);
+}
+.cta-card-content{position:relative;z-index:2;}
+.cta-card-content h3{
+  font-family:var(--ff-display);font-size:1.6rem;font-weight:600;
+  letter-spacing:0.06em;text-transform:uppercase;color:var(--white);margin-bottom:8px;
+}
+.cta-card-content p{color:var(--text-secondary);font-size:0.95rem;margin-bottom:1.25rem;max-width:400px;}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 26px;font-family:var(--ff-display);font-size:12px;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;border-radius:4px;cursor:pointer;transition:var(--transition);
+  border:none;
+}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:var(--navy-deep);}
+.btn-gold:hover{background:linear-gradient(135deg,var(--gold-light),var(--gold));transform:translateY(-2px);box-shadow:0 4px 20px rgba(200,168,76,0.3);color:var(--navy-deep);}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--gold-dim);}
+.btn-outline:hover{background:var(--gold-glow);color:var(--gold-light);transform:translateY(-2px);}
+.btn-white{background:var(--white);color:var(--navy-deep);}
+.btn-white:hover{background:#fff;transform:translateY(-2px);box-shadow:0 4px 16px rgba(255,255,255,0.15);}
+
+/* ========== CONTACT STRIP ========== */
+.contact-strip{
+  background:var(--navy-mid);border-top:2px solid var(--gold);border-bottom:1px solid var(--border-light);
+}
+.contact-strip-inner{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);
+}
+@media(max-width:700px){.contact-strip-inner{grid-template-columns:1fr;}}
+.contact-item{
+  display:flex;align-items:center;gap:16px;padding:1.5rem 2rem;
+  border-right:1px solid var(--border-light);
+}
+.contact-item:last-child{border-right:none;}
+@media(max-width:700px){.contact-item{border-right:none;border-bottom:1px solid var(--border-light);}}
+.contact-icon{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--gold-glow);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;
+}
+.contact-info{font-size:0.85rem;color:var(--text-secondary);line-height:1.5;}
+.contact-info strong{display:block;color:var(--white);font-weight:600;font-size:0.9rem;}
+.contact-info a{color:var(--gold);font-weight:600;}
+
+/* ========== FOOTER ========== */
+.site-footer{
+  position:relative;overflow:hidden;
+  background:var(--navy-deep);border-top:1px solid var(--border-light);
+  padding:3.5rem 2rem 0;
+}
+.footer-top{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:2.5rem;
+  padding-bottom:2.5rem;border-bottom:1px solid var(--border-light);
+}
+@media(max-width:900px){.footer-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.footer-top{grid-template-columns:1fr;}}
+
+.footer-brand{display:flex;align-items:flex-start;gap:14px;}
+.footer-brand-badge{
+  width:48px;height:48px;background:linear-gradient(135deg,var(--gold),var(--gold-dim));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-display);font-size:13px;font-weight:700;color:var(--navy-deep);flex-shrink:0;
+}
+.footer-brand-text h4{
+  font-family:var(--ff-display);font-size:14px;font-weight:600;letter-spacing:0.06em;
+  text-transform:uppercase;color:var(--white);margin-bottom:4px;
+}
+.footer-brand-text p{font-size:0.82rem;color:var(--text-secondary);line-height:1.6;}
+
+.footer-col h4{
+  font-family:var(--ff-display);font-size:12px;font-weight:600;letter-spacing:0.15em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1rem;
+}
+.footer-col ul{list-style:none;}
+.footer-col li{margin-bottom:6px;}
+.footer-col li a{font-size:0.85rem;color:var(--text-secondary);transition:var(--transition);}
+.footer-col li a:hover{color:var(--gold);padding-left:4px;}
+
+.footer-social{display:flex;gap:10px;margin-top:1rem;}
+.footer-social a{
+  width:36px;height:36px;border-radius:50%;
+  background:rgba(255,255,255,0.05);border:1px solid var(--border-light);
+  display:flex;align-items:center;justify-content:center;font-size:16px;
+  color:var(--text-secondary);transition:var(--transition);
+}
+.footer-social a:hover{background:var(--gold-glow);border-color:var(--gold-dim);color:var(--gold);}
+
+.footer-bottom{
+  max-width:1200px;margin:0 auto;
+  padding:1.5rem 0;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  font-size:0.75rem;color:var(--text-dim);
+  font-family:var(--ff-display);letter-spacing:0.06em;
+}
+
+/* ========== PAGE HEADERS (Sub-pages) ========== */
+.page-hero{
+  position:relative;padding:5rem 2rem 4rem;text-align:center;
+  background:linear-gradient(180deg,var(--navy-mid),var(--navy-deep));
+  border-bottom:1px solid var(--border);overflow:hidden;
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 100%,rgba(200,168,76,0.06) 0%,transparent 50%);
+}
+.page-hero h1{
+  position:relative;font-size:clamp(2rem,4vw,3rem);font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--white);margin-bottom:8px;
+}
+.page-hero .gold-line{width:50px;height:3px;background:var(--gold);margin:16px auto;}
+.page-hero p{position:relative;color:var(--text-secondary);font-size:1rem;max-width:500px;margin:0 auto;}
+
+/* ========== CARDS ========== */
+.card{
+  background:var(--card-bg);border:1px solid var(--border-light);border-radius:8px;
+  padding:2rem;transition:var(--transition);
+}
+.card:hover{border-color:var(--border);box-shadow:0 0 24px rgba(200,168,76,0.06);transform:translateY(-2px);}
+.card h3{font-size:1rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.card p{color:var(--text-secondary);font-size:0.9rem;line-height:1.7;}
+.card-grid{display:grid;gap:1.5rem;}
+.card-grid-2{grid-template-columns:repeat(auto-fit,minmax(340px,1fr));}
+.card-grid-3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+
+/* ========== ORG CHART ========== */
+.org-level{text-align:center;margin-bottom:2rem;}
+.org-level-title{
+  display:inline-block;font-family:var(--ff-display);font-size:11px;font-weight:500;
+  letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);
+  padding:4px 16px;border:1px solid var(--border-light);border-radius:20px;margin-bottom:1rem;
+}
+.org-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+.org-card{
+  background:var(--card-bg);border:1px solid var(--border-light);border-radius:8px;
+  padding:1.25rem 2rem;min-width:200px;text-align:center;transition:var(--transition);
+}
+.org-card:hover{border-color:var(--border);box-shadow:0 0 20px rgba(200,168,76,0.08);}
+.org-card.chief{border-color:var(--gold);box-shadow:0 0 30px rgba(200,168,76,0.1);}
+.org-card .stars{color:var(--gold);font-size:12px;letter-spacing:4px;margin-bottom:4px;}
+.rank-bars{display:flex;gap:3px;justify-content:center;margin-bottom:4px;}
+.rank-bar{width:6px;height:18px;border-radius:1px;background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--gold-dim));box-shadow:0 1px 3px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.2);}
+.rank-bars-inline{display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px;}
+.rank-bar-sm{width:5px;height:14px;border-radius:1px;background:linear-gradient(90deg,var(--gold-light),var(--gold),var(--gold-dim));box-shadow:0 1px 2px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.2);}
+.org-card .rank{font-family:var(--ff-display);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);}
+.org-card .name{font-family:var(--ff-serif);font-size:1.1rem;color:var(--gold);margin-top:4px;}
+.org-card .name.vacant{color:var(--text-dim);font-style:italic;font-size:0.9rem;}
+.org-connector{width:2px;height:28px;background:var(--gold-dim);margin:0 auto;opacity:0.5;}
+
+/* Bureau boxes */
+.bureau-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;}
+.bureau-box{
+  background:var(--card-bg);border:1px solid rgba(45,108,206,0.2);border-radius:10px;padding:2rem;
+}
+.bureau-box h3{
+  font-size:0.95rem;color:var(--blue-light);margin-bottom:1.5rem;padding-bottom:10px;
+  border-bottom:1px solid rgba(45,108,206,0.15);text-align:center;letter-spacing:0.08em;
+}
+.bureau-unit{
+  padding:10px 14px;background:rgba(0,0,0,0.25);border:1px solid var(--border-light);
+  border-radius:6px;margin-bottom:6px;
+}
+.bureau-unit .u-name{font-family:var(--ff-display);font-size:0.85rem;letter-spacing:0.04em;color:var(--text-primary);}
+.bureau-unit .u-cmd{font-size:0.8rem;color:var(--text-secondary);}
+.bureau-unit .u-cmd strong{color:var(--gold);font-weight:600;}
+.bureau-sub{margin-left:20px;border-left:2px solid rgba(200,168,76,0.15);padding-left:12px;}
+.bureau-sub .bureau-unit{background:rgba(0,0,0,0.15);border-color:rgba(255,255,255,0.04);}
+.bureau-lt{border-color:rgba(77,142,240,0.3);background:rgba(45,108,206,0.08);}
+.bureau-lt .u-name{color:var(--blue-light);font-weight:600;}
+.bureau-lt .u-cmd{color:var(--text-primary);}
+.bureau-label{
+  font-family:var(--ff-display);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--text-dim);margin:1rem 0 0.5rem;
+}
+
+/* ========== FLEET TABLES ========== */
+.fleet-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:2rem;}
+.fleet-tab{
+  padding:9px 18px;font-family:var(--ff-display);font-size:12px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--text-secondary);background:var(--card-bg);border:1px solid var(--border-light);
+  border-radius:4px;cursor:pointer;transition:var(--transition);
+}
+.fleet-tab:hover{border-color:var(--border);color:var(--text-primary);}
+.fleet-tab.active{background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:var(--navy-deep);border-color:var(--gold);}
+.fleet-panel{display:none;}.fleet-panel.active{display:block;}
+.fleet-table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.fleet-table thead th{
+  font-family:var(--ff-display);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--gold);padding:12px 14px;text-align:left;border-bottom:2px solid rgba(200,168,76,0.3);
+  background:rgba(0,0,0,0.2);
+}
+.fleet-table tbody td{padding:10px 14px;border-bottom:1px solid var(--border-light);color:var(--text-secondary);}
+.fleet-table tbody tr:hover td{background:var(--gold-glow);color:var(--text-primary);}
+.status-badge{display:inline-block;padding:2px 10px;border-radius:20px;font-size:0.75rem;font-family:var(--ff-display);letter-spacing:0.04em;}
+.status-available{background:rgba(76,175,80,0.12);color:#81c784;border:1px solid rgba(76,175,80,0.25);}
+@media(max-width:768px){.fleet-table{display:block;overflow-x:auto;}}
+
+/* ========== STATS ========== */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.25rem;}
+.stat-card{
+  background:var(--card-bg);border:1px solid var(--border-light);border-radius:8px;
+  padding:1.75rem 1.25rem;text-align:center;transition:var(--transition);
+}
+.stat-card:hover{border-color:var(--border);}
+.stat-number{font-family:var(--ff-display);font-size:2.5rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-label{font-family:var(--ff-display);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-secondary);margin-top:8px;}
+.stat-bar-group{margin-bottom:1.25rem;}
+.stat-bar-label{display:flex;justify-content:space-between;margin-bottom:6px;font-family:var(--ff-display);font-size:0.8rem;letter-spacing:0.04em;text-transform:uppercase;}
+.stat-bar-label span:first-child{color:var(--text-primary);}
+.stat-bar-label span:last-child{color:var(--gold);}
+.stat-bar{height:8px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden;}
+.stat-bar-fill{height:100%;border-radius:4px;transition:width 1.5s cubic-bezier(0.4,0,0.2,1);width:0;}
+.stat-bar-fill.gold{background:linear-gradient(90deg,var(--gold-dim),var(--gold));}
+.stat-bar-fill.blue{background:linear-gradient(90deg,var(--blue-dark),var(--blue));}
+
+/* ========== DOCUMENTS ========== */
+.doc-list{max-width:800px;margin:0 auto;}
+.doc-item{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  padding:1.25rem 1.5rem;background:var(--card-bg);border:1px solid var(--border-light);
+  border-radius:8px;margin-bottom:8px;transition:var(--transition);
+}
+.doc-item:hover{border-color:var(--border);background:rgba(26,37,64,0.5);}
+.doc-info h4{font-family:var(--ff-body);font-size:0.9rem;font-weight:600;color:var(--white);margin-bottom:2px;}
+.doc-info p{font-size:0.8rem;color:var(--text-dim);}
+.doc-badge{
+  font-family:var(--ff-display);font-size:10px;letter-spacing:0.08em;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;white-space:nowrap;
+}
+.doc-badge.active{background:rgba(76,175,80,0.12);color:#81c784;border:1px solid rgba(76,175,80,0.25);}
+.doc-badge.sop{background:var(--gold-glow);color:var(--gold);border:1px solid rgba(200,168,76,0.25);}
+
+/* Policy list compact */
+.policy-item{
+  padding:10px 16px;background:var(--card-bg);border:1px solid var(--border-light);
+  border-radius:6px;margin-bottom:4px;font-size:0.85rem;color:var(--text-secondary);
+  transition:var(--transition);
+}
+.policy-item:hover{border-color:var(--border);color:var(--text-primary);}
+.policy-item .pnum{color:var(--gold);font-weight:600;font-family:var(--ff-display);letter-spacing:0.04em;}
+
+/* ========== DIVISIONS ========== */
+.div-card{
+  background:var(--card-bg);border:1px solid var(--border-light);border-radius:10px;
+  overflow:hidden;transition:var(--transition);
+}
+.div-card:hover{border-color:var(--border);transform:translateY(-2px);}
+.div-card-head{
+  padding:1.5rem;background:linear-gradient(135deg,var(--navy-mid),var(--navy-light));
+  border-bottom:1px solid var(--border-light);display:flex;align-items:center;gap:14px;
+}
+.div-icon{
+  width:44px;height:44px;border-radius:50%;background:var(--gold-glow);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.div-card-head h3{font-size:0.9rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--white);}
+.div-card-head p{font-size:0.78rem;color:var(--text-secondary);font-family:var(--ff-body);text-transform:none;letter-spacing:0;font-weight:400;margin-top:2px;}
+.div-card-body{padding:1.5rem;}
+.div-card-body p{font-size:0.88rem;color:var(--text-secondary);line-height:1.7;}
+.div-card-body ul{list-style:none;margin-top:0.75rem;}
+.div-card-body li{padding:5px 0;font-size:0.84rem;color:var(--text-secondary);border-bottom:1px solid rgba(255,255,255,0.03);}
+.div-card-body li::before{content:'›';color:var(--gold);margin-right:10px;font-weight:700;}
+
+/* ========== JOIN US ========== */
+.join-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;counter-reset:step;}
+.join-step{
+  background:var(--card-bg);border:1px solid var(--border-light);border-radius:8px;
+  padding:2rem;position:relative;counter-increment:step;transition:var(--transition);
+}
+.join-step:hover{border-color:var(--border);}
+.join-step::before{
+  content:counter(step,decimal-leading-zero);
+  font-family:var(--ff-display);font-size:3rem;font-weight:700;color:rgba(200,168,76,0.08);
+  position:absolute;top:10px;right:20px;
+}
+.join-step h4{font-size:0.95rem;color:var(--gold);margin-bottom:8px;letter-spacing:0.06em;text-transform:uppercase;}
+.join-step p{font-size:0.88rem;color:var(--text-secondary);}
+
+/* ========== IMAGE PLACEHOLDER ========== */
+.img-ph{
+  background:linear-gradient(135deg,var(--navy-mid),var(--navy-light));
+  border:2px dashed rgba(200,168,76,0.25);border-radius:8px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+  color:var(--text-dim);font-family:var(--ff-display);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;
+  min-height:180px;padding:1rem;text-align:center;
+}
+.img-ph .ph-i{font-size:2rem;opacity:0.4;}
+
+/* Rank structure rows */
+.rank-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 20px;background:var(--card-bg);border-radius:6px;margin-bottom:4px;
+  border:1px solid var(--border-light);transition:var(--transition);
+}
+.rank-row:hover{border-color:var(--border);}
+.rank-row .r-name{font-family:var(--ff-display);font-size:0.85rem;letter-spacing:0.06em;}
+.rank-row .r-tier{font-size:0.72rem;color:var(--text-dim);font-family:var(--ff-display);letter-spacing:0.08em;text-transform:uppercase;}
+.rank-row.admin{border-color:rgba(200,168,76,0.3);}.rank-row.admin .r-name{color:var(--gold);}
+.rank-row.command{border-color:rgba(45,108,206,0.25);}.rank-row.command .r-name{color:var(--blue-light);}
+.rank-row .r-name{color:var(--text-primary);}
+
+/* Values */
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.values-grid{grid-template-columns:1fr;}}
+.value-card{text-align:center;padding:2.5rem 1.5rem;background:var(--card-bg);border:1px solid var(--border-light);border-radius:8px;transition:var(--transition);}
+.value-card:hover{border-color:var(--border);}
+.value-card .v-icon{font-size:2.2rem;margin-bottom:1rem;}
+.value-card h3{font-size:1rem;color:var(--gold);margin-bottom:8px;letter-spacing:0.08em;text-transform:uppercase;}
+.value-card p{font-size:0.88rem;color:var(--text-secondary);}
+</style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <span>For Emergencies Dial <a href="tel:911">911</a> &nbsp;|&nbsp; Non-Emergency Police Response <a href="#">Contact MPD</a></span>
+  <span style="color:var(--gold-dim);">Florida Coast Roleplay</span>
+</div>
+
+<!-- MAIN NAVIGATION -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <div class="nav-badge" onclick="navigate('home')">
+      <div class="nav-badge-icon">MPD
+        <!-- IMAGE PLACEHOLDER: Replace this div with your badge/logo image -->
+      </div>
+      <div class="nav-badge-text">
+        <strong>Municipal Police Dept.</strong>
+        <span>Integrity · Respect · Accountability</span>
+      </div>
+    </div>
+    <button class="nav-toggle" onclick="toggleNav()"><span></span><span></span><span></span></button>
+    <ul class="nav-menu" id="navMenu">
+      <button class="mobile-close" onclick="toggleNav()">×</button>
+      <li>
+        <span class="nav-trigger" onclick="navigate('about')">Your MPD <span class="nav-arrow">▼</span></span>
+        <div class="mega-dropdown">
+          <a class="mega-featured" onclick="navigate('about')"><span>About the Department</span></a>
+          <a onclick="navigate('staff')">Org Chart</a>
+          <a onclick="navigate('about')">Mission & Values</a>
+          <a onclick="navigate('join')">Join the MPD</a>
+          <a onclick="navigate('staff')">Leadership</a>
+          <a onclick="navigate('divisions')">Divisions & Units</a>
+          <a onclick="navigate('certifications')">Certifications</a>
+        </div>
+      </li>
+      <li>
+        <span class="nav-trigger">Resources <span class="nav-arrow">▼</span></span>
+        <div class="mega-dropdown">
+          <a class="mega-featured" onclick="navigate('documents')"><span>Department Documents</span></a>
+          <a onclick="navigate('documents')">Standard Operating Procedures</a>
+          <a onclick="navigate('documents')">Policy Book</a>
+          <a onclick="navigate('fleet')">Fleet & Motorpool</a>
+          <a onclick="navigate('stats')">Department Statistics</a>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7Twa5yULi1CMUZzxbnmVy75Ojudz2zZgDmkGWJidu5oLbuw/viewform" target="_blank">Patrol Log</a>
+        </div>
+      </li>
+      <li><a href="#" data-page="staff" onclick="navigate('staff')">Our Staff</a></li>
+      <li><a href="#" data-page="divisions" onclick="navigate('divisions')">Divisions</a></li>
+      <li><a href="#" data-page="join" onclick="navigate('join')">Join Us</a></li>
+      <li><a href="#" onclick="navigate('documents')">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================================================================
+     HOME PAGE
+     ================================================================ -->
+<div class="page active" id="page-home">
+
+  <!-- Hero Slider -->
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active">
+      <div class="hero-slide-bg">
+        <!-- IMAGE PLACEHOLDER: Slide 1 background image — e.g. officers on patrol -->
+      </div>
+      <div class="hero-slide-content">
+        <h2>Commitment to Leadership</h2>
+        <p>"Integrity in all we say and do"</p>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#131b2e,#1a2540);">
+        <!-- IMAGE PLACEHOLDER: Slide 2 background image — e.g. community outreach -->
+      </div>
+      <div class="hero-slide-content">
+        <h2>Service to Our Community</h2>
+        <p>"Dedicated to the pursuit of excellence"</p>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#162035,#0f1928);">
+        <!-- IMAGE PLACEHOLDER: Slide 3 background image — e.g. special operations -->
+      </div>
+      <div class="hero-slide-content">
+        <h2>Respect for People</h2>
+        <p>"Community stewardship and public safety"</p>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-slide-bg" style="background:linear-gradient(135deg,#111a2a,#1a2b45);">
+        <!-- IMAGE PLACEHOLDER: Slide 4 background image — e.g. fleet/vehicles -->
+      </div>
+      <div class="hero-slide-content">
+        <h2>Quality Through Continuous Improvement</h2>
+        <p>"An elevated standard of policing"</p>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <div class="hero-dot active" onclick="goSlide(0)"></div>
+      <div class="hero-dot" onclick="goSlide(1)"></div>
+      <div class="hero-dot" onclick="goSlide(2)"></div>
+      <div class="hero-dot" onclick="goSlide(3)"></div>
+    </div>
+    <div class="hero-motto">
+      <h1>"Integrity &nbsp;|&nbsp; Respect &nbsp;|&nbsp; Accountability"</h1>
+    </div>
+  </div>
+
+  <!-- Quicklinks Bar -->
+  <div class="quicklinks-bar">
+    <div class="quicklinks-inner">
+      <div class="quicklink-item" onclick="navigate('documents')">
+        <div class="ql-label">Public Documents</div>
+      </div>
+      <div class="quicklink-item" onclick="navigate('staff')">
+        <div class="ql-label">Personnel Directory</div>
+      </div>
+      <div class="quicklink-item" onclick="navigate('fleet')">
+        <div class="ql-label">Fleet & Motorpool</div>
+      </div>
+      <div class="quicklink-item" onclick="navigate('stats')">
+        <div class="ql-label">Statistics</div>
+      </div>
+      <div class="quicklink-item" onclick="navigate('divisions')">
+        <div class="ql-label">Divisions</div>
+      </div>
+      <div class="quicklink-item" onclick="navigate('join')">
+        <div class="ql-label">Join the Team</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsroom + Chief -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="news-section">
+        <!-- Left: Newsroom / Events -->
+        <div>
+          <div class="news-tabs">
+            <button class="news-tab active" onclick="showNewsTab('newsroom')">Newsroom</button>
+            <button class="news-tab" onclick="showNewsTab('events')">Events</button>
+          </div>
+          <div class="news-panel active" id="panel-newsroom">
+            <div class="news-item" onclick="navigate('documents')">
+              <h4>Policy #27 — Promotion Requirement Policy Implemented</h4>
+              <div class="news-date">03/11/2026</div>
+            </div>
+            <div class="news-item" onclick="navigate('documents')">
+              <h4>Updated Policy #002 — Patrol Vehicle License Plates</h4>
+              <div class="news-date">03/11/2026</div>
+            </div>
+            <div class="news-item" onclick="navigate('documents')">
+              <h4>Patrol Division Policy #026 Established — Div A, B, C & CID</h4>
+              <div class="news-date">02/24/2026</div>
+            </div>
+            <div class="news-item" onclick="navigate('documents')">
+              <h4>Policy Update #013 — Forcible Stops During Vehicle Pursuits</h4>
+              <div class="news-date">02/14/2026</div>
+            </div>
+            <div class="news-item" onclick="navigate('documents')">
+              <h4>Implementation of Policies #020–#025: Take-Home, Code Response, Driving, Crime Scene, OIS, Incident Command</h4>
+              <div class="news-date">02/11/2026</div>
+            </div>
+            <div class="news-item" onclick="navigate('documents')">
+              <h4>Department Officially Established — Policy Book Created</h4>
+              <div class="news-date">01/28/2026</div>
+            </div>
+            <a class="news-view-all" onclick="navigate('documents')">View All Documents</a>
+          </div>
+          <div class="news-panel" id="panel-events">
+            <div class="news-item">
+              <h4>Department Meeting — Date TBD</h4>
+              <div class="news-date">Upcoming</div>
+            </div>
+            <div style="padding:2rem 0;color:var(--text-dim);font-style:italic;font-size:0.9rem;">More events coming soon.</div>
+          </div>
+        </div>
+
+        <!-- Right: Chief / Video -->
+        <div>
+          <div class="chief-card">
+            <div class="chief-card-img">
+              <div class="play-btn">▶</div>
+              <div class="ph-text">
+                <!-- IMAGE PLACEHOLDER: Chief message video thumbnail or photo -->
+                Chief's Photo / Video Placeholder
+              </div>
+            </div>
+            <div class="chief-card-body">
+              <h3>Message from the Chief of Police</h3>
+              <p>Chief Dimes H. — January 2026</p>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem;padding:1.5rem;background:var(--card-bg);border:1px solid var(--border-light);border-radius:8px;">
+            <p style="font-family:var(--ff-serif);font-style:italic;font-size:0.95rem;color:var(--text-secondary);line-height:1.8;">
+              "Our mission is anchored in the unwavering commitment to serving the state of Florida, embodying an esteemed and highly proficient force that extends into community stewardship and public safety."
+            </p>
+            <p style="margin-top:8px;font-family:var(--ff-display);font-size:0.8rem;color:var(--gold);letter-spacing:0.08em;">— CHIEF OF POLICE, DIMES H.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Cards: Join + Documents -->
+  <div class="cta-grid">
+    <div class="cta-card">
+      <div class="cta-card-bg">
+        <!-- IMAGE PLACEHOLDER: "Join the Team" background image -->
+      </div>
+      <div class="cta-card-content">
+        <h3>Join the Team</h3>
+        <p>There are countless ways to serve with the Municipal Police Department across three jurisdictions.</p>
+        <a class="btn btn-gold" onclick="navigate('join')">Explore How to Join</a>
+      </div>
+    </div>
+    <div class="cta-card">
+      <div class="cta-card-bg" style="background:linear-gradient(135deg,#0f1928,#1a2b45);">
+        <!-- IMAGE PLACEHOLDER: "Divisions" background image -->
+      </div>
+      <div class="cta-card-content">
+        <h3>Our Divisions</h3>
+        <p>From SWAT to K-9, Marine to Aviation — explore the specialized units of the MPD.</p>
+        <a class="btn btn-outline" onclick="navigate('divisions')">View All Divisions</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Strip -->
+  <div class="contact-strip">
+    <div class="contact-strip-inner">
+      <div class="contact-item">
+        <div class="contact-icon"></div>
+        <div class="contact-info">
+          <strong>Life-Threatening Emergencies</strong>
+          <a href="tel:911">9-1-1</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"></div>
+        <div class="contact-info">
+          <strong>Non-Emergency Response</strong>
+          Contact your local station
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon"></div>
+        <div class="contact-info">
+          <strong>Questions & Feedback</strong>
+          <a href="#">Contact Department Administration</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     ABOUT PAGE
+     ================================================================ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <h1>About the Department</h1>
+    <div class="gold-line"></div>
+    <p>Serving and protecting the communities of South Florida</p>
+  </div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header section-header-center">
+        <h2>Mission Statement</h2>
+        <div class="gold-line"></div>
+      </div>
+      <div style="max-width:800px;margin:0 auto;text-align:center;">
+        <p style="font-family:var(--ff-serif);font-size:1.1rem;line-height:1.9;color:var(--text-secondary);font-style:italic;">
+          The mission of the Municipal Police Department is anchored in the unwavering commitment to serving the state of Florida as a whole, embodying an esteemed and highly proficient force that transcends mere law enforcement and extends into the realms of community stewardship and public safety. Dedicated to the relentless pursuit of excellence, the Police Department upholds an unequivocal determination to achieve and maintain an elevated standard of policing, exemplifying unwavering dedication, unimpeachable integrity, and exemplary professionalism in every facet of their operation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Our Core Values</h2><div class="gold-line"></div></div>
+      <div class="values-grid">
+        <div class="value-card"><h3>Integrity</h3><p>We uphold the highest ethical standards in every action, maintaining the trust placed in us by the communities we serve.</p></div>
+        <div class="value-card"><h3>Respect</h3><p>We treat every individual with dignity and fairness, fostering positive community relationships built on mutual trust.</p></div>
+        <div class="value-card"><h3>Accountability</h3><p>We accept responsibility for our actions and decisions, maintaining transparency in all departmental operations.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Jurisdictions</h2><div class="gold-line"></div><p>The Municipal Police Department operates across three major jurisdictions</p></div>
+      <div class="card-grid card-grid-3">
+        <div class="card" style="text-align:center;">
+          <div class="img-ph" style="min-height:150px;margin-bottom:1.25rem;">Miami PD Image<!-- IMAGE PLACEHOLDER --></div>
+          <h3>Miami Police Department</h3>
+          <p>Primary patrol jurisdiction covering the City of Miami and surrounding metropolitan areas.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="img-ph" style="min-height:150px;margin-bottom:1.25rem;">Fort Lauderdale Image<!-- IMAGE PLACEHOLDER --></div>
+          <h3>Fort Lauderdale PD</h3>
+          <p>Serving the Fort Lauderdale community with dedicated patrol and investigative operations.</p>
+        </div>
+        <div class="card" style="text-align:center;">
+          <div class="img-ph" style="min-height:150px;margin-bottom:1.25rem;">Boynton Beach Image<!-- IMAGE PLACEHOLDER --></div>
+          <h3>Boynton Beach PD</h3>
+          <p>Providing comprehensive law enforcement services to the Boynton Beach community.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Gallery</h2><div class="gold-line"></div></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;">
+        <div class="img-ph">Gallery Image 1</div>
+        <div class="img-ph">Gallery Image 2</div>
+        <div class="img-ph">Gallery Image 3</div>
+        <div class="img-ph">Gallery Image 4</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================================
+     STAFF PAGE
+     ================================================================ -->
+<div class="page" id="page-staff">
+  <div class="page-hero"><h1>Our Staff</h1><div class="gold-line"></div><p>Organizational structure of the Municipal Police Department</p></div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="org-level">
+        <div class="org-level-title">Office of the Chief — Administration</div>
+        <div class="org-cards">
+          <div class="org-card chief"><div class="stars">★★★★</div><div class="rank">Chief of Police</div><div class="name">Dimes H.</div></div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-cards">
+          <div class="org-card"><div class="stars">★★★</div><div class="rank">Assistant Chief of Police</div><div class="name vacant">— Vacant —</div></div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-cards">
+          <div class="org-card"><div class="stars">★★</div><div class="rank">Major</div><div class="name vacant">— Vacant —</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Bureaus & Command</h2><div class="gold-line"></div></div>
+      <div class="bureau-grid">
+        <div class="bureau-box">
+          <h3>Field Operations Bureau</h3>
+          <div class="bureau-unit" style="border-color:rgba(200,168,76,0.3);background:var(--gold-glow);"><div class="u-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span><span class="rank-bar-sm"></span></span>Bureau Captain</div><div class="u-cmd"><strong>Jared S.</strong></div></div>
+          <div class="bureau-label">Watch Commander</div>
+          <div class="bureau-unit bureau-lt"><div class="u-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span></span>Lieutenant</div><div class="u-cmd"><em style="color:var(--text-dim);">— Vacant —</em></div></div>
+          <div class="bureau-unit"><div class="u-name">Patrol Division A</div><div class="u-cmd">Sergeant: <strong>Richard M.</strong></div></div>
+          <div class="bureau-unit"><div class="u-name">Patrol Division B</div><div class="u-cmd">Sergeant: <em style="color:var(--text-dim);">Vacant</em></div></div>
+          <div class="bureau-unit"><div class="u-name">Patrol Division C</div><div class="u-cmd">Sergeant: <strong>Wolf P.</strong></div></div>
+          <div class="bureau-label">Patrol Support Services</div>
+          <div class="bureau-unit"><div class="u-name">Traffic Enforcement Unit</div><div class="u-cmd">Commander: <em style="color:var(--text-dim);">Vacant</em></div></div>
+          <div class="bureau-sub">
+            <div class="bureau-unit"><div class="u-name">Motor Bike Unit</div><div class="u-cmd">Commander: <em style="color:var(--text-dim);">Vacant</em></div></div>
+          </div>
+          <div class="bureau-unit"><div class="u-name">Canine Unit</div><div class="u-cmd">Commander: <em style="color:var(--text-dim);">Vacant</em></div></div>
+          <div class="bureau-unit"><div class="u-name">Marine Unit</div><div class="u-cmd">Commander: <em style="color:var(--text-dim);">Vacant</em></div></div>
+          <div class="bureau-unit"><div class="u-name">Aviation Unit</div><div class="u-cmd">Commander: <em style="color:var(--text-dim);">Vacant</em></div></div>
+        </div>
+        <div class="bureau-box">
+          <h3>Administrative Operations Bureau</h3>
+          <div class="bureau-unit" style="border-color:rgba(200,168,76,0.3);background:var(--gold-glow);"><div class="u-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span><span class="rank-bar-sm"></span></span>Bureau Captain</div><div class="u-cmd"><strong>Raylan G.</strong></div></div>
+          <div class="bureau-unit bureau-lt"><div class="u-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span></span>Lieutenant</div><div class="u-cmd"><em style="color:var(--text-dim);">— Vacant —</em></div></div>
+          <div style="margin-top:1rem;padding:1rem;background:rgba(0,0,0,0.15);border-radius:6px;">
+            <p style="font-size:0.82rem;color:var(--text-secondary);">Responsible for departmental documentation, procedures, policies, administrative functions, and ensuring standards are maintained.</p>
+          </div>
+        </div>
+        <div class="bureau-box">
+          <h3>Special Operations Bureau</h3>
+          <div class="bureau-unit" style="border-color:rgba(200,168,76,0.3);background:var(--gold-glow);"><div class="u-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span><span class="rank-bar-sm"></span></span>Bureau Captain</div><div class="u-cmd"><strong>Cole H.</strong></div></div>
+          <div class="bureau-label">Special Response Unit</div>
+          <div class="bureau-unit bureau-lt"><div class="u-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span></span>SRU Lieutenant</div><div class="u-cmd"><em style="color:var(--text-dim);">— Vacant —</em></div></div>
+          <div class="bureau-sub">
+            <div class="bureau-unit"><div class="u-name">Special Weapons & Tactics</div><div class="u-cmd">Commander: <strong>Sgt. Wolf P.</strong></div></div>
+            <div class="bureau-sub">
+              <div class="bureau-unit"><div class="u-name">Bomb Unit</div><div class="u-cmd">&nbsp;</div></div>
+            </div>
+            <div class="bureau-unit"><div class="u-name">Crisis Negotiation Team</div><div class="u-cmd">Commander: <em style="color:var(--text-dim);">Vacant</em></div></div>
+          </div>
+          <div class="bureau-label">Criminal Investigations Division</div>
+          <div class="bureau-unit"><div class="u-name">CID — Chief Detective</div><div class="u-cmd"><strong>Sgt. Dylan W.</strong></div></div>
+          <div class="bureau-sub">
+            <div class="bureau-unit"><div class="u-name">Special Investigations Section</div><div class="u-cmd">Commander: <em style="color:var(--text-dim);">Vacant</em></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Rank Structure</h2><div class="gold-line"></div></div>
+      <div style="max-width:700px;margin:0 auto;">
+        <div class="rank-row admin"><span class="r-name">★★★★ Chief of Police</span><span class="r-tier">Administration</span></div>
+        <div class="rank-row admin"><span class="r-name">★★★ Assistant Chief of Police</span><span class="r-tier">Administration</span></div>
+        <div class="rank-row admin"><span class="r-name">★★ Major</span><span class="r-tier">Administration</span></div>
+        <div class="rank-row command"><span class="r-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span><span class="rank-bar-sm"></span></span>Captain</span><span class="r-tier">Command</span></div>
+        <div class="rank-row command"><span class="r-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span></span>Lieutenant</span><span class="r-tier">Command</span></div>
+        <div class="rank-row"><span class="r-name">Detective Sergeant / Sergeant</span><span class="r-tier">Supervisor</span></div>
+        <div class="rank-row"><span class="r-name">Corporal</span><span class="r-tier">Supervisor in Training</span></div>
+        <div class="rank-row"><span class="r-name" style="color:var(--text-secondary);">Sr. Detective · Off. III · Det. II · Off. II · Det. I · Off. I</span><span class="r-tier">Patrol</span></div>
+        <div class="rank-row"><span class="r-name" style="color:var(--text-secondary);">Probationary Officer</span><span class="r-tier">Entry</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================================
+     DOCUMENTS PAGE
+     ================================================================ -->
+<div class="page" id="page-documents">
+  <div class="page-hero"><h1>Documents</h1><div class="gold-line"></div><p>Public and internal department documents</p></div>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header"><h2>Public Documents</h2><div class="gold-line"></div></div>
+      <div class="doc-list">
+        <a href="https://docs.google.com/document/d/102YzuNnRYbDNoNz56W0F00oC-FFX6d8SsnjrNV2FuPE/edit" target="_blank" class="doc-item"><div class="doc-info"><h4>Standard Operating Procedures</h4><p>Department-wide SOP manual for all officers</p></div><span class="doc-badge sop">SOP</span></a>
+        <a href="https://docs.google.com/document/d/1p0WhMUKIDylgAeKGZ0rokt95hgFyCUxYykgpKo_Tl2M/edit" target="_blank" class="doc-item"><div class="doc-info"><h4>Policy Book — 27 Active Policies</h4><p>Complete policy handbook including all administrative memoranda</p></div><span class="doc-badge active">Active</span></a>
+        <a href="https://docs.google.com/spreadsheets/d/1rg-hVErdSddqMVhxqJ17wJQh-DyVVmf8N5-_CFMfusw/edit" target="_blank" class="doc-item"><div class="doc-info"><h4>Personnel Roster</h4><p>Full-time, reserve, and recruit personnel roster</p></div><span class="doc-badge active">Live</span></a>
+        <a href="https://docs.google.com/spreadsheets/d/1rGfpvKc-3smOP3Px0sGQMT4FLtmWckmLgCI8FwaYhD8/edit" target="_blank" class="doc-item"><div class="doc-info"><h4>Motorpool 2026</h4><p>Vehicle fleet assignments for all jurisdictions</p></div><span class="doc-badge active">Live</span></a>
+        <a href="https://docs.google.com/spreadsheets/d/1W7V1UMeyFNQkx37bu3DFSiW3Xr9o27GRTFjh0fDoiow/edit" target="_blank" class="doc-item"><div class="doc-info"><h4>Uniform Structure 2026</h4><p>Class A/B/C uniform specifications for all departments</p></div><span class="doc-badge active">Live</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="section-inner">
+      <div class="section-header"><h2>Internal Resources</h2><div class="gold-line"></div></div>
+      <div class="doc-list">
+        <a href="https://docs.google.com/spreadsheets/d/1IxR5a_DIElifU4xwySzahwbldF_FtkJQuWnZgRikd6o/edit" target="_blank" class="doc-item"><div class="doc-info"><h4>Timecard Sheet</h4><p>Weekly hour tracking</p></div><span class="doc-badge active">Internal</span></a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7Twa5yULi1CMUZzxbnmVy75Ojudz2zZgDmkGWJidu5oLbuw/viewform" target="_blank" class="doc-item"><div class="doc-info"><h4>Patrol Log Form</h4><p>Submit patrol hours and activity</p></div><span class="doc-badge active">Form</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header"><h2>Active Policy Index</h2><div class="gold-line"></div><p>All 27 policies from the department Policy Book</p></div>
+      <div style="max-width:800px;margin:0 auto;">
+        <div class="policy-item"><span class="pnum">#001</span> — Department Standard Operating Procedures</div>
+        <div class="policy-item"><span class="pnum">#002</span> — Patrol Vehicle License Plates</div>
+        <div class="policy-item"><span class="pnum">#003</span> — Unmarked Vehicle Activation</div>
+        <div class="policy-item"><span class="pnum">#004</span> — Plain Clothes Policy</div>
+        <div class="policy-item"><span class="pnum">#005</span> — Identification Policy</div>
+        <div class="policy-item"><span class="pnum">#006</span> — RA Identifier Policy</div>
+        <div class="policy-item"><span class="pnum">#007</span> — Civilian Ride-Along Policy</div>
+        <div class="policy-item"><span class="pnum">#008</span> — Bicycle Patrol Policy</div>
+        <div class="policy-item"><span class="pnum">#009</span> — Supervisor Request Policy</div>
+        <div class="policy-item"><span class="pnum">#010</span> — Warrant Request</div>
+        <div class="policy-item"><span class="pnum">#011</span> — Detained Suspects Policy</div>
+        <div class="policy-item"><span class="pnum">#012</span> — Incident Report Review Policy</div>
+        <div class="policy-item"><span class="pnum">#013</span> — Vehicle Pursuit Policy</div>
+        <div class="policy-item"><span class="pnum">#014</span> — Internal Affairs Policy</div>
+        <div class="policy-item"><span class="pnum">#015</span> — Special/Undercover Call-Out Policy</div>
+        <div class="policy-item"><span class="pnum">#016</span> — Specialized Vehicles</div>
+        <div class="policy-item"><span class="pnum">#017</span> — Exit Interview Policy</div>
+        <div class="policy-item"><span class="pnum">#018</span> — FDLE Memorandums and Policies</div>
+        <div class="policy-item"><span class="pnum">#019</span> — Self-Attaching Policy</div>
+        <div class="policy-item"><span class="pnum">#020</span> — Take-Home Policy</div>
+        <div class="policy-item"><span class="pnum">#021</span> — Code Response Policy</div>
+        <div class="policy-item"><span class="pnum">#022</span> — Driving Etiquette Policy</div>
+        <div class="policy-item"><span class="pnum">#023</span> — Crime Scene Establishment Policy</div>
+        <div class="policy-item"><span class="pnum">#024</span> — Officer Involved Shootings</div>
+        <div class="policy-item"><span class="pnum">#025</span> — Incident Command Policy</div>
+        <div class="policy-item"><span class="pnum">#026</span> — Patrol Division Policy</div>
+        <div class="policy-item"><span class="pnum">#027</span> — Promotion Requirement Policy</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================================
+     FLEET PAGE
+     ================================================================ -->
+<div class="page" id="page-fleet">
+  <div class="page-hero"><h1>Fleet & Motorpool</h1><div class="gold-line"></div><p>Department vehicle fleet — Motorpool 2026</p></div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="fleet-tabs">
+        <button class="fleet-tab active" onclick="showFleet(this,'miami')">Miami</button>
+        <button class="fleet-tab" onclick="showFleet(this,'ftl')">Fort Lauderdale</button>
+        <button class="fleet-tab" onclick="showFleet(this,'bb')">Boynton Beach</button>
+        <button class="fleet-tab" onclick="showFleet(this,'k9')">K-9</button>
+        <button class="fleet-tab" onclick="showFleet(this,'traffic')">Traffic</button>
+      </div>
+      <div class="fleet-panel active" id="fleet-miami"><table class="fleet-table"><thead><tr><th>Car #</th><th>Model</th><th>Plate</th><th>Type</th><th>Status</th><th>Notes</th></tr></thead><tbody>
+        <tr><td>1001</td><td>2011 Crown Victoria</td><td>XPD001</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1002</td><td>2011 Crown Victoria</td><td>XPD002</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1003–1005</td><td>2016 Ford Explorer</td><td>XPD003–005</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1006–1008</td><td>2018 Ford Taurus</td><td>XPD006–008</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1009–1012</td><td>2020 Ford Explorer</td><td>XPD009–012</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1013–1014</td><td>2021 Chevrolet Tahoe</td><td>XPD013–014</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1015–1016</td><td>2013 Ford Explorer</td><td>XPD017–018</td><td>Slicktop</td><td><span class="status-badge status-available">Available</span></td><td>Sergeant+</td></tr>
+        <tr><td>1020</td><td>AS350 Helicopter</td><td>N/A</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td>Aviation</td></tr>
+      </tbody></table></div>
+      <div class="fleet-panel" id="fleet-ftl"><table class="fleet-table"><thead><tr><th>Car #</th><th>Model</th><th>Plate</th><th>Type</th><th>Status</th><th>Notes</th></tr></thead><tbody>
+        <tr><td>1101–1103</td><td>2018 Dodge Charger</td><td>XPD100–102</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1104–1106</td><td>2018 Chevrolet Tahoe</td><td>XPD103–105</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1107–1109</td><td>2022 Dodge Durango</td><td>XPD106–108</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1110–1112</td><td>2020 Ford F150</td><td>XPD109–111</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td>Incl. Outreach Livery</td></tr>
+        <tr><td>1113–1116</td><td>2022 Chevrolet Tahoe</td><td>XPD112–115</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1117–1120</td><td>2022 Chevrolet Tahoe</td><td>XPD116–119</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td>Sergeant Only</td></tr>
+        <tr><td>1123–1124</td><td>2021 Chevrolet Tahoe</td><td>XPD120–121</td><td>Ghosted</td><td><span class="status-badge status-available">Available</span></td><td>Black Ghosted LT+</td></tr>
+        <tr><td>1125–1126</td><td>2021 Chevrolet Tahoe</td><td>XPD122–123</td><td>Ghosted</td><td><span class="status-badge status-available">Available</span></td><td>White Ghosted LT+</td></tr>
+      </tbody></table></div>
+      <div class="fleet-panel" id="fleet-bb"><table class="fleet-table"><thead><tr><th>Car #</th><th>Model</th><th>Plate</th><th>Type</th><th>Status</th><th>Notes</th></tr></thead><tbody>
+        <tr><td>1201–1204</td><td>2020 Ford Explorer</td><td>XPD200–203</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1205–1206</td><td>2017 Dodge Charger</td><td>XPD204–205</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1207–1208</td><td>2020 Dodge Charger</td><td>XPD206–207</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1209–1212</td><td>2021 Dodge Charger</td><td>XPD208–211</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1213–1216</td><td>2018 Chevrolet Tahoe</td><td>XPD212–215</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td></td></tr>
+        <tr><td>1217</td><td>2018 Ford Explorer</td><td>XPD216</td><td>Slick</td><td><span class="status-badge status-available">Available</span></td><td>Sergeant+</td></tr>
+        <tr><td>1218–1219</td><td>Contender Boat</td><td>XPD219–220</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td><td>Marine</td></tr>
+      </tbody></table></div>
+      <div class="fleet-panel" id="fleet-k9"><table class="fleet-table"><thead><tr><th>Car #</th><th>Model</th><th>Plate</th><th>Type</th><th>Status</th></tr></thead><tbody>
+        <tr><td>1301–1303</td><td>2016 Ford Explorer</td><td>XK91–93</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td></tr>
+        <tr><td>1304–1305</td><td>2022 Dodge Durango</td><td>XK94–95</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td></tr>
+        <tr><td>1306–1307</td><td>2018 Dodge Charger</td><td>XK96–97</td><td>Marked</td><td><span class="status-badge status-available">Available</span></td></tr>
+        <tr><td>1308–1310</td><td>2019 Chevrolet Tahoe</td><td>XK98–90</td><td>Slick</td><td><span class="status-badge status-available">Available</span></td></tr>
+      </tbody></table></div>
+      <div class="fleet-panel" id="fleet-traffic"><table class="fleet-table"><thead><tr><th>Car #</th><th>Model</th><th>Plate</th><th>Type</th><th>Status</th></tr></thead><tbody>
+        <tr><td>1401</td><td>2021 Chevrolet Tahoe</td><td>XTU1</td><td>Ghosted</td><td><span class="status-badge status-available">Available</span></td></tr>
+      </tbody></table><div style="padding:2rem;text-align:center;color:var(--text-dim);font-style:italic;">Additional traffic vehicles pending assignment</div></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================================
+     STATS PAGE
+     ================================================================ -->
+<div class="page" id="page-stats">
+  <div class="page-hero"><h1>Department Statistics</h1><div class="gold-line"></div><p>Performance metrics and operational data</p></div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Overview</h2><div class="gold-line"></div></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-number">40:15</div><div class="stat-label">Weekly Hours</div></div>
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Jurisdictions</div></div>
+        <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Active Bureaus</div></div>
+        <div class="stat-card"><div class="stat-number">27</div><div class="stat-label">Active Policies</div></div>
+        <div class="stat-card"><div class="stat-number">70+</div><div class="stat-label">Fleet Vehicles</div></div>
+        <div class="stat-card"><div class="stat-number">4</div><div class="stat-label">Patrol Divisions</div></div>
+      </div>
+      <div style="margin-top:3.5rem;max-width:700px;margin-left:auto;margin-right:auto;">
+        <div class="section-header"><h2>Fleet Distribution</h2><div class="gold-line"></div></div>
+        <div class="stat-bar-group"><div class="stat-bar-label"><span>Miami</span><span>17</span></div><div class="stat-bar"><div class="stat-bar-fill gold" data-width="85%"></div></div></div>
+        <div class="stat-bar-group"><div class="stat-bar-label"><span>Fort Lauderdale</span><span>22</span></div><div class="stat-bar"><div class="stat-bar-fill gold" data-width="100%"></div></div></div>
+        <div class="stat-bar-group"><div class="stat-bar-label"><span>Boynton Beach</span><span>19</span></div><div class="stat-bar"><div class="stat-bar-fill gold" data-width="90%"></div></div></div>
+        <div class="stat-bar-group"><div class="stat-bar-label"><span>Canine</span><span>10</span></div><div class="stat-bar"><div class="stat-bar-fill blue" data-width="50%"></div></div></div>
+        <div class="stat-bar-group"><div class="stat-bar-label"><span>Traffic</span><span>1</span></div><div class="stat-bar"><div class="stat-bar-fill blue" data-width="8%"></div></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Monthly Activity</h2><div class="gold-line"></div><p>Update these values from the Personnel Roster dashboard</p></div>
+      <div class="stats-grid" style="max-width:800px;margin:0 auto;">
+        <div class="stat-card"><div class="stat-number">—</div><div class="stat-label">Arrests</div></div>
+        <div class="stat-card"><div class="stat-number">—</div><div class="stat-label">Citations</div></div>
+        <div class="stat-card"><div class="stat-number">—</div><div class="stat-label">Calls for Service</div></div>
+        <div class="stat-card"><div class="stat-number">—</div><div class="stat-label">Major Crimes</div></div>
+        <div class="stat-card"><div class="stat-number">—</div><div class="stat-label">OIS</div></div>
+        <div class="stat-card"><div class="stat-number">—</div><div class="stat-label">Pursuits</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================================
+     DIVISIONS PAGE
+     ================================================================ -->
+<div class="page" id="page-divisions">
+  <div class="page-hero"><h1>Divisions & Units</h1><div class="gold-line"></div><p>Specialized units of the Municipal Police Department</p></div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header"><h2>Patrol Divisions</h2><div class="gold-line"></div></div>
+      <div style="max-width:400px;margin:0 auto 1.5rem;">
+        <div class="div-card"><div class="div-card-head" style="justify-content:center;"><div><h3 style="color:var(--blue-light);">Watch Commander</h3><p>Field Operations Bureau — Lieutenant: Vacant</p></div></div></div>
+      </div>
+      <div class="card-grid card-grid-3">
+        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Patrol Division A</h3><p>Callsign 10s</p></div></div><div class="div-card-body"><p>Primary uniform patrol operations.</p><ul><li>Sergeant: <strong style="color:var(--gold)">Richard M.</strong></li><li>Callsign series: 10s</li></ul></div></div>
+        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Patrol Division B</h3><p>Callsign 20s</p></div></div><div class="div-card-body"><p>Zone-based uniform patrol coverage.</p><ul><li>Sergeant: <em style="color:var(--text-dim)">Vacant</em></li><li>Callsign series: 20s</li></ul></div></div>
+        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Patrol Division C</h3><p>Callsign 30s</p></div></div><div class="div-card-body"><p>Community-focused uniform patrol.</p><ul><li>Sergeant: <strong style="color:var(--gold)">Wolf P.</strong></li><li>Callsign series: 30s</li></ul></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark">
+    <div class="section-inner">
+      <div class="section-header"><h2>Specialized Units</h2><div class="gold-line"></div></div>
+      <div class="card-grid card-grid-2">
+        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Criminal Investigations</h3><p>CID — Callsign 40s (Victor)</p></div></div><div class="div-card-body"><p>Major crimes, follow-up investigations, and detective operations.</p><ul><li>Chief Det.: <strong style="color:var(--gold)">Sgt. Dylan W.</strong></li><li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);">Special Investigations Section — Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
+        <div class="div-card"><div class="div-card-head"><div><h3>Special Response Unit</h3><p>Special Ops Bureau — Lieutenant: Vacant</p></div></div><div class="div-card-body"><p>Umbrella unit overseeing tactical and crisis operations within the Special Operations Bureau.</p><ul><li><strong style="color:var(--gold)">SWAT</strong> — Commander: Sgt. Wolf P.</li><li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);">Bomb Unit</li><li><strong style="color:var(--gold)">Crisis Negotiation Team</strong> — Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
+        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Traffic Enforcement Unit</h3><p>Field Ops Bureau</p></div></div><div class="div-card-body"><p>Speed enforcement, DUI, accident investigation, and traffic operations.</p><ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li><li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);"><strong style="color:var(--text-primary)">Motor Bike Unit</strong> — Sub-unit of TEU</li></ul></div></div>
+        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Canine Unit</h3><p>Field Ops Bureau</p></div></div><div class="div-card-body"><p>K-9 tracking, narcotics & explosives detection.</p><ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
+        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Aviation Unit</h3><p>Field Ops Bureau</p></div></div><div class="div-card-body"><p>Aerial support, pursuit assistance, surveillance.</p><ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
+        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Marine Unit</h3><p>Field Ops Bureau</p></div></div><div class="div-card-body"><p>Waterway patrol and maritime law enforcement.</p><ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================================
+     CERTIFICATIONS PAGE
+     ================================================================ -->
+<div class="page" id="page-certifications">
+  <div class="page-hero"><h1>Certifications</h1><div class="gold-line"></div><p>Specialized certifications for department personnel</p></div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="card-grid card-grid-3">
+        <div class="card"><h3>Field Training Officer</h3><p>Train and evaluate probationary officers. Required for Corporal promotion.</p></div>
+        <div class="card"><h3>PIT Certification</h3><p>Precision Immobilization Technique for Traffic Enforcement Unit members.</p></div>
+        <div class="card"><h3>SWAT Operator</h3><p>Tactical operator certification for high-risk entry and operations.</p></div>
+        <div class="card"><h3>Crisis Negotiator</h3><p>Crisis communication, de-escalation for barricade and hostage scenarios.</p></div>
+        <div class="card"><h3>K-9 Handler</h3><p>Canine handling for narcotics detection, tracking, and apprehension.</p></div>
+        <div class="card"><h3>Criminal Investigator</h3><p>Detective-level certification for investigations and evidence processing.</p></div>
+        <div class="card"><h3>Marine Operations</h3><p>Watercraft operation for coastal patrol and maritime enforcement.</p></div>
+        <div class="card"><h3>Aviation Operations</h3><p>Helicopter operation for aerial support and surveillance.</p></div>
+        <div class="card"><h3>Bicycle Patrol</h3><p>Community policing in parks, trails, beaches per Policy #008.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================================
+     JOIN US PAGE
+     ================================================================ -->
+<div class="page" id="page-join">
+  <div class="page-hero"><h1>Join the MPD</h1><div class="gold-line"></div><p>Begin your career with the Municipal Police Department</p></div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Become an Officer</h2><div class="gold-line"></div><p>We are always seeking dedicated individuals to join our ranks</p></div>
+      <div class="join-steps">
+        <div class="join-step"><h4>Submit Application</h4><p>Complete the application form. All applications are reviewed by command staff.</p></div>
+        <div class="join-step"><h4>Academy Training</h4><p>Complete the academy program. FDLE-certified external members may be exempt.</p></div>
+        <div class="join-step"><h4>Field Training</h4><p>Complete the FTO program under a certified Field Training Officer.</p></div>
+        <div class="join-step"><h4>Probationary Period</h4><p>Begin as a Probationary Officer. Demonstrate skills, SOP knowledge, and values.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-dark">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>Requirements</h2><div class="gold-line"></div></div>
+      <div class="card-grid card-grid-2">
+        <div class="card"><h3>Activity Requirements</h3><p><strong style="color:var(--white)">Probationary–Officer III:</strong> 3 hrs/week</p><p style="margin-top:6px;"><strong style="color:var(--white)">Corporal:</strong> 4 hrs/week</p><p style="margin-top:6px;"><strong style="color:var(--white)">Sergeant+:</strong> 5 hrs/week</p><p style="margin-top:6px;"><strong style="color:var(--white)">Reserve:</strong> 1 hr/week</p></div>
+        <div class="card"><h3>Promotion Criteria</h3><p>Minimum 30 days at current rank. Must meet attendance, have no major DA in 30 days, demonstrate professional conduct, and pass required interviews for Corporal+ ranks.</p></div>
+      </div>
+      <div style="text-align:center;margin-top:2.5rem;">
+        <a href="#" class="btn btn-gold" style="font-size:13px;padding:13px 36px;">Apply Now</a>
+      </div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header section-header-center"><h2>External & Reserve Members</h2><div class="gold-line"></div></div>
+      <div style="max-width:700px;margin:0 auto;">
+        <div class="card">
+          <h3>External Member Program</h3>
+          <p>External members must complete the FTO program. Those with valid FDLE certification may skip the academy. Vehicle and uniform structures strictly enforced. Not permitted to join subdivisions. Reserve activity: 1 hour weekly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+        <div class="footer-brand-badge">MPD</div>
+        <div class="footer-brand-text">
+          <h4>Municipal Police Department</h4>
+          <p>Serving Miami, Fort Lauderdale & Boynton Beach within the state of Florida.</p>
+          <p style="margin-top:6px;font-style:italic;color:var(--gold-dim);font-size:0.8rem;">Integrity · Respect · Accountability</p>
+        </div>
+      </div>
+      <div class="footer-social">
+        <!-- Add your social media links here -->
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#" onclick="navigate('home')">Home</a></li>
+        <li><a href="#" onclick="navigate('about')">About</a></li>
+        <li><a href="#" onclick="navigate('staff')">Our Staff</a></li>
+        <li><a href="#" onclick="navigate('documents')">Documents</a></li>
+        <li><a href="#" onclick="navigate('join')">Join Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="#" onclick="navigate('fleet')">Fleet & Motorpool</a></li>
+        <li><a href="#" onclick="navigate('divisions')">Divisions</a></li>
+        <li><a href="#" onclick="navigate('certifications')">Certifications</a></li>
+        <li><a href="#" onclick="navigate('stats')">Statistics</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Administration</h4>
+      <ul>
+        <li><a href="#" onclick="navigate('staff')" style="color:var(--text-secondary)">Chief: Dimes H.</a></li>
+        <li><a href="#" style="color:var(--text-dim)">Asst. Chief: Vacant</a></li>
+        <li><a href="#" style="color:var(--text-dim)">Major: Vacant</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Copyright ©2026 Municipal Police Department — Florida Coast Roleplay. All Rights Reserved.</span>
+    <span>Created by Dimes M. — Do Not Copy or Reproduce</span>
+  </div>
+</footer>
+
+<!-- ================================================================
+     JAVASCRIPT
+     ================================================================ -->
+<script>
+/* SPA Routing */
+function navigate(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const t=document.getElementById('page-'+page);
+  if(t)t.classList.add('active');
+  document.querySelectorAll('.nav-menu>li>a[data-page]').forEach(a=>a.classList.remove('active'));
+  const n=document.querySelector('.nav-menu>li>a[data-page="'+page+'"]');
+  if(n)n.classList.add('active');
+  window.location.hash=page;
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById('navMenu').classList.remove('open');
+  if(page==='stats')setTimeout(animateBars,300);
+}
+window.addEventListener('DOMContentLoaded',()=>{const h=window.location.hash.replace('#','');if(h&&document.getElementById('page-'+h))navigate(h);});
+window.addEventListener('hashchange',()=>{const h=window.location.hash.replace('#','');if(h&&document.getElementById('page-'+h))navigate(h);});
+
+/* Mobile Nav */
+function toggleNav(){document.getElementById('navMenu').classList.toggle('open');}
+
+/* Hero Slider */
+let currentSlide=0;
+const slides=document.querySelectorAll('.hero-slide');
+const dots=document.querySelectorAll('.hero-dot');
+function goSlide(n){
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide=n;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+setInterval(()=>{goSlide((currentSlide+1)%slides.length);},5000);
+
+/* News Tabs */
+function showNewsTab(id){
+  document.querySelectorAll('.news-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.news-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+/* Fleet Tabs */
+function showFleet(btn,id){
+  document.querySelectorAll('.fleet-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.fleet-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('fleet-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* Stat Bars */
+function animateBars(){
+  document.querySelectorAll('.stat-bar-fill').forEach(b=>{
+    const w=b.getAttribute('data-width');if(w)b.style.width=w;
+  });
+}
+if(window.location.hash==='#stats')setTimeout(animateBars,500);
+</script>
+</body>
+</html>
