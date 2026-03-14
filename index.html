@@ -556,7 +556,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 }
 .bureau-unit{
   padding:10px 14px;background:rgba(0,0,0,0.25);border:1px solid var(--border-light);
-  border-radius:6px;margin-bottom:6px;
+  border-radius:6px;margin-bottom:6px;text-align:center;
 }
 .bureau-unit .u-name{font-family:var(--ff-display);font-size:0.85rem;letter-spacing:0.04em;color:var(--text-primary);}
 .bureau-unit .u-cmd{font-size:0.8rem;color:var(--text-secondary);}
@@ -568,7 +568,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 .bureau-lt .u-cmd{color:var(--text-primary);}
 .bureau-label{
   font-family:var(--ff-display);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
-  color:var(--text-dim);margin:1rem 0 0.5rem;
+  color:var(--text-dim);margin:1rem 0 0.5rem;text-align:center;
 }
 
 /* ========== FLEET TABLES ========== */
@@ -687,13 +687,14 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
 
 /* Rank structure rows */
 .rank-row{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:12px 20px;background:var(--card-bg);border-radius:6px;margin-bottom:4px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:16px 20px;background:var(--card-bg);border-radius:6px;margin-bottom:4px;
   border:1px solid var(--border-light);transition:var(--transition);
 }
 .rank-row:hover{border-color:var(--border);}
 .rank-row .r-name{font-family:var(--ff-display);font-size:0.85rem;letter-spacing:0.06em;}
-.rank-row .r-tier{font-size:0.72rem;color:var(--text-dim);font-family:var(--ff-display);letter-spacing:0.08em;text-transform:uppercase;}
+.rank-row .r-tier{font-size:0.72rem;color:var(--text-dim);font-family:var(--ff-display);letter-spacing:0.08em;text-transform:uppercase;margin-top:2px;}
+.rank-row .r-desc{font-size:0.78rem;color:var(--text-secondary);margin-top:6px;max-width:500px;line-height:1.5;font-family:var(--ff-body);}
 .rank-row.admin{border-color:rgba(200,168,76,0.3);}.rank-row.admin .r-name{color:var(--gold);}
 .rank-row.command{border-color:rgba(45,108,206,0.25);}.rank-row.command .r-name{color:var(--blue-light);}
 .rank-row .r-name{color:var(--text-primary);}
@@ -740,7 +741,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
           <a onclick="navigate('join')">Join the MPD</a>
           <a onclick="navigate('staff')">Leadership</a>
           <a onclick="navigate('divisions')">Divisions & Units</a>
-          <a onclick="navigate('certifications')">Certifications</a>
         </div>
       </li>
       <li>
@@ -881,19 +881,12 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
         <!-- Right: Chief / Video -->
         <div>
           <div class="chief-card">
-            <div class="chief-card-img" style="background:url('chief.jpg') center/cover no-repeat;">
-              <div class="play-btn">▶</div>
+            <div style="padding:1.5rem;background:var(--card-bg);border:1px solid var(--border-light);border-radius:8px;">
+              <p style="font-family:var(--ff-serif);font-style:italic;font-size:0.95rem;color:var(--text-secondary);line-height:1.8;">
+                "Our mission is anchored in the unwavering commitment to serving the state of Florida, embodying an esteemed and highly proficient force that extends into community stewardship and public safety."
+              </p>
+              <p style="margin-top:8px;font-family:var(--ff-display);font-size:0.8rem;color:var(--gold);letter-spacing:0.08em;">— CHIEF OF POLICE, DIMES H.</p>
             </div>
-            <div class="chief-card-body">
-              <h3>Message from the Chief of Police</h3>
-              <p>Chief Dimes H. — January 2026</p>
-            </div>
-          </div>
-          <div style="margin-top:1.5rem;padding:1.5rem;background:var(--card-bg);border:1px solid var(--border-light);border-radius:8px;">
-            <p style="font-family:var(--ff-serif);font-style:italic;font-size:0.95rem;color:var(--text-secondary);line-height:1.8;">
-              "Our mission is anchored in the unwavering commitment to serving the state of Florida, embodying an esteemed and highly proficient force that extends into community stewardship and public safety."
-            </p>
-            <p style="margin-top:8px;font-family:var(--ff-display);font-size:0.8rem;color:var(--gold);letter-spacing:0.08em;">— CHIEF OF POLICE, DIMES H.</p>
           </div>
         </div>
       </div>
@@ -955,7 +948,7 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   <div class="page-hero">
     <h1>About the Department</h1>
     <div class="gold-line"></div>
-    <p>Serving and protecting the communities of South Florida</p>
+    <p>Serving and protecting the communities of Florida</p>
   </div>
 
   <section class="section">
@@ -1099,15 +1092,15 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
     <div class="section-inner">
       <div class="section-header section-header-center"><h2>Rank Structure</h2><div class="gold-line"></div></div>
       <div style="max-width:700px;margin:0 auto;">
-        <div class="rank-row admin"><span class="r-name">★★★★ Chief of Police</span><span class="r-tier">Administration</span></div>
-        <div class="rank-row admin"><span class="r-name">★★★ Assistant Chief of Police</span><span class="r-tier">Administration</span></div>
-        <div class="rank-row admin"><span class="r-name">★★ Major</span><span class="r-tier">Administration</span></div>
-        <div class="rank-row command"><span class="r-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span><span class="rank-bar-sm"></span></span>Captain</span><span class="r-tier">Command</span></div>
-        <div class="rank-row command"><span class="r-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span></span>Lieutenant</span><span class="r-tier">Command</span></div>
-        <div class="rank-row"><span class="r-name">Detective Sergeant / Sergeant</span><span class="r-tier">Supervisor</span></div>
-        <div class="rank-row"><span class="r-name">Corporal</span><span class="r-tier">Supervisor in Training</span></div>
-        <div class="rank-row"><span class="r-name" style="color:var(--text-secondary);">Sr. Detective · Off. III · Det. II · Off. II · Det. I · Off. I</span><span class="r-tier">Patrol</span></div>
-        <div class="rank-row"><span class="r-name" style="color:var(--text-secondary);">Probationary Officer</span><span class="r-tier">Entry</span></div>
+        <div class="rank-row admin"><span class="r-name">★★★★ Chief of Police</span><span class="r-tier">Administration</span><span class="r-desc">Head of the department. Oversees all operations and ensures the department is performing to its full potential.</span></div>
+        <div class="rank-row admin"><span class="r-name">★★★ Assistant Chief of Police</span><span class="r-tier">Administration</span><span class="r-desc">Second-in-command. Assists the Chief of Police and heads the department in the Chief's absence.</span></div>
+        <div class="rank-row admin"><span class="r-name">★★ Major</span><span class="r-tier">Administration</span><span class="r-desc">Third-in-command. Oversees day-to-day operations and assists in administrative-related decisions.</span></div>
+        <div class="rank-row command"><span class="r-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span><span class="rank-bar-sm"></span></span>Captain</span><span class="r-tier">Command</span><span class="r-desc">Oversees day-to-day bureau operations and supervision of the Supervisor Team. Ensures Division and Certification leaders conduct their responsibilities.</span></div>
+        <div class="rank-row command"><span class="r-name"><span class="rank-bars-inline"><span class="rank-bar-sm"></span></span>Lieutenant</span><span class="r-tier">Command</span><span class="r-desc">Ensures efficient department operations, assists Captains in supervising the Supervisor Team, and commands assigned detachments.</span></div>
+        <div class="rank-row"><span class="r-name">Detective Sergeant / Sergeant</span><span class="r-tier">Supervisor</span><span class="r-desc">First line of the Chain of Command. Oversees delegated sectors of personnel, leads and assists officers on patrol, and upholds department standards.</span></div>
+        <div class="rank-row"><span class="r-name">Corporal</span><span class="r-tier">Supervisor in Training</span><span class="r-desc">Developing supervisory skills while actively serving as a Field Training Officer. Learning the responsibilities of department supervision.</span></div>
+        <div class="rank-row"><span class="r-name" style="color:var(--text-secondary);">Senior Detective · Officer III · Detective II · Officer II · Detective I · Officer I</span><span class="r-tier">Patrol</span><span class="r-desc">Core patrol ranks responsible for responding to calls for service, conducting investigations, enforcing the law, and engaging with the community.</span></div>
+        <div class="rank-row"><span class="r-name" style="color:var(--text-secondary);">Probationary Officer</span><span class="r-tier">Entry</span><span class="r-desc">Newly hired officers completing their Field Training Program. Learning department procedures and demonstrating patrol competency.</span></div>
       </div>
     </div>
   </section>
@@ -1279,7 +1272,9 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
      DIVISIONS PAGE
      ================================================================ -->
 <div class="page" id="page-divisions">
-  <div class="page-hero"><h1>Divisions & Units</h1><div class="gold-line"></div><p>Specialized units of the Municipal Police Department</p></div>
+  <div class="page-hero"><h1>Divisions & Units</h1><div class="gold-line"></div><p>Specialized divisions and units of the Municipal Police Department</p></div>
+
+  <!-- Patrol Divisions -->
   <section class="section">
     <div class="section-inner">
       <div class="section-header"><h2>Patrol Divisions</h2><div class="gold-line"></div></div>
@@ -1287,44 +1282,116 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
         <div class="div-card"><div class="div-card-head" style="justify-content:center;"><div><h3 style="color:var(--blue-light);">Watch Commander</h3><p>Field Operations Bureau — Lieutenant: Vacant</p></div></div></div>
       </div>
       <div class="card-grid card-grid-3">
-        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Patrol Division A</h3><p>Callsign 10s</p></div></div><div class="div-card-body"><p>Primary uniform patrol operations.</p><ul><li>Sergeant: <strong style="color:var(--gold)">Richard M.</strong></li><li>Callsign series: 10s</li></ul></div></div>
-        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Patrol Division B</h3><p>Callsign 20s</p></div></div><div class="div-card-body"><p>Zone-based uniform patrol coverage.</p><ul><li>Sergeant: <em style="color:var(--text-dim)">Vacant</em></li><li>Callsign series: 20s</li></ul></div></div>
-        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Patrol Division C</h3><p>Callsign 30s</p></div></div><div class="div-card-body"><p>Community-focused uniform patrol.</p><ul><li>Sergeant: <strong style="color:var(--gold)">Wolf P.</strong></li><li>Callsign series: 30s</li></ul></div></div>
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Patrol Division A</h3><p>Field Operations Bureau</p></div></div>
+          <div class="div-card-body">
+            <p>Uniform patrol division responsible for primary response operations, proactive policing, and community engagement within their assigned zone.</p>
+            <ul><li>Sergeant: <strong style="color:var(--gold)">Richard M.</strong></li></ul>
+          </div>
+        </div>
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Patrol Division B</h3><p>Field Operations Bureau</p></div></div>
+          <div class="div-card-body">
+            <p>Uniform patrol division providing zone-based coverage, responding to calls for service, and maintaining public safety throughout their area of responsibility.</p>
+            <ul><li>Sergeant: <em style="color:var(--text-dim)">Vacant</em></li></ul>
+          </div>
+        </div>
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Patrol Division C</h3><p>Field Operations Bureau</p></div></div>
+          <div class="div-card-body">
+            <p>Uniform patrol division focused on community-oriented policing, proactive patrol operations, and maintaining order within their designated area.</p>
+            <ul><li>Sergeant: <strong style="color:var(--gold)">Wolf P.</strong></li></ul>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <!-- Specialized Divisions -->
   <section class="section section-dark">
     <div class="section-inner">
-      <div class="section-header"><h2>Specialized Units</h2><div class="gold-line"></div></div>
+      <div class="section-header"><h2>Specialized Divisions</h2><div class="gold-line"></div></div>
       <div class="card-grid card-grid-2">
-        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Criminal Investigations</h3><p>CID — Callsign 40s (Victor)</p></div></div><div class="div-card-body"><p>Major crimes, follow-up investigations, and detective operations.</p><ul><li>Chief Det.: <strong style="color:var(--gold)">Sgt. Dylan W.</strong></li><li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);">Special Investigations Section — Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
-        <div class="div-card"><div class="div-card-head"><div><h3>Special Response Unit</h3><p>Special Ops Bureau — Lieutenant: Vacant</p></div></div><div class="div-card-body"><p>Umbrella unit overseeing tactical and crisis operations within the Special Operations Bureau.</p><ul><li><strong style="color:var(--gold)">SWAT</strong> — Commander: Sgt. Wolf P.</li><li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);">Bomb Unit</li><li><strong style="color:var(--gold)">Crisis Negotiation Team</strong> — Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
-        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Traffic Enforcement Unit</h3><p>Field Ops Bureau</p></div></div><div class="div-card-body"><p>Speed enforcement, DUI, accident investigation, and traffic operations.</p><ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li><li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);"><strong style="color:var(--text-primary)">Motor Bike Unit</strong> — Sub-unit of TEU</li></ul></div></div>
-        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Canine Unit</h3><p>Field Ops Bureau</p></div></div><div class="div-card-body"><p>K-9 tracking, narcotics & explosives detection.</p><ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
-        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Aviation Unit</h3><p>Field Ops Bureau</p></div></div><div class="div-card-body"><p>Aerial support, pursuit assistance, surveillance.</p><ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
-        <div class="div-card"><div class="div-card-head"><div class="div-icon"></div><div><h3>Marine Unit</h3><p>Field Ops Bureau</p></div></div><div class="div-card-body"><p>Waterway patrol and maritime law enforcement.</p><ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul></div></div>
+
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Criminal Investigations Division</h3><p>Special Operations Bureau</p></div></div>
+          <div class="div-card-body">
+            <p>The Criminal Investigations Division is responsible for investigating major crimes, conducting follow-up investigations on cases referred by patrol, and managing sensitive cases that require detective-level expertise. CID personnel work closely with patrol to build cases, process evidence, and bring investigations to resolution.</p>
+            <ul>
+              <li>Chief Detective: <strong style="color:var(--gold)">Sgt. Dylan W.</strong></li>
+              <li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);">Special Investigations Section — Commander: <em style="color:var(--text-dim)">Vacant</em></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Special Response Unit</h3><p>Special Operations Bureau — Lieutenant: Vacant</p></div></div>
+          <div class="div-card-body">
+            <p>The Special Response Unit is the umbrella command overseeing the department's tactical and crisis operations. The SRU coordinates high-risk deployments, ensures tactical readiness, and manages specialized assets within the Special Operations Bureau.</p>
+            <ul>
+              <li><strong style="color:var(--gold)">SWAT</strong> — Commander: Sgt. Wolf P.</li>
+              <li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);">Bomb Unit</li>
+              <li><strong style="color:var(--gold)">Crisis Negotiation Team</strong> — Commander: <em style="color:var(--text-dim)">Vacant</em></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Traffic Enforcement Unit</h3><p>Field Operations Bureau</p></div></div>
+          <div class="div-card-body">
+            <p>The Traffic Enforcement Unit is responsible for speed and DUI enforcement, traffic accident investigation and reconstruction, and maintaining roadway safety across all MPD jurisdictions. TEU officers are trained in specialized vehicle operations and collision analysis.</p>
+            <ul>
+              <li>Commander: <em style="color:var(--text-dim)">Vacant</em></li>
+              <li style="padding-left:16px;border-left:2px solid rgba(200,168,76,0.15);"><strong style="color:var(--text-primary)">Motor Bike Unit</strong> — Commander: <em style="color:var(--text-dim)">Vacant</em></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Canine Unit</h3><p>Field Operations Bureau</p></div></div>
+          <div class="div-card-body">
+            <p>The Canine Unit provides K-9 support to patrol and investigative operations. Handlers and their partners are deployed for suspect tracking, narcotics and explosives detection, evidence searches, and apprehension operations in support of department-wide missions.</p>
+            <ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul>
+          </div>
+        </div>
+
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Aviation Unit</h3><p>Field Operations Bureau</p></div></div>
+          <div class="div-card-body">
+            <p>The Aviation Unit provides aerial support to ground operations including pursuit assistance, search and rescue, aerial surveillance, and tactical overwatch. The unit operates department helicopters to extend the reach of patrol and specialized units.</p>
+            <ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul>
+          </div>
+        </div>
+
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Marine Unit</h3><p>Field Operations Bureau</p></div></div>
+          <div class="div-card-body">
+            <p>The Marine Unit conducts waterway patrol and maritime law enforcement operations across the department's coastal jurisdictions. Officers enforce maritime laws, respond to waterborne emergencies, and provide security for waterfront areas.</p>
+            <ul><li>Commander: <em style="color:var(--text-dim)">Vacant</em></li></ul>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
-</div>
 
-<!-- ================================================================
-     CERTIFICATIONS PAGE
-     ================================================================ -->
-<div class="page" id="page-certifications">
-  <div class="page-hero"><h1>Certifications</h1><div class="gold-line"></div><p>Specialized certifications for department personnel</p></div>
+  <!-- Programs -->
   <section class="section">
     <div class="section-inner">
-      <div class="card-grid card-grid-3">
-        <div class="card"><h3>Field Training Officer</h3><p>Train and evaluate probationary officers. Required for Corporal promotion.</p></div>
-        <div class="card"><h3>PIT Certification</h3><p>Precision Immobilization Technique for Traffic Enforcement Unit members.</p></div>
-        <div class="card"><h3>SWAT Operator</h3><p>Tactical operator certification for high-risk entry and operations.</p></div>
-        <div class="card"><h3>Crisis Negotiator</h3><p>Crisis communication, de-escalation for barricade and hostage scenarios.</p></div>
-        <div class="card"><h3>K-9 Handler</h3><p>Canine handling for narcotics detection, tracking, and apprehension.</p></div>
-        <div class="card"><h3>Criminal Investigator</h3><p>Detective-level certification for investigations and evidence processing.</p></div>
-        <div class="card"><h3>Marine Operations</h3><p>Watercraft operation for coastal patrol and maritime enforcement.</p></div>
-        <div class="card"><h3>Aviation Operations</h3><p>Helicopter operation for aerial support and surveillance.</p></div>
-        <div class="card"><h3>Bicycle Patrol</h3><p>Community policing in parks, trails, beaches per Policy #008.</p></div>
+      <div class="section-header"><h2>Programs</h2><div class="gold-line"></div></div>
+      <div class="card-grid card-grid-2">
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Field Training Officer Program</h3><p>Department-Wide</p></div></div>
+          <div class="div-card-body">
+            <p>The Field Training Officer (FTO) Program is responsible for the training and evaluation of all probationary officers during their field training period. Certified FTOs guide new officers through real-world patrol scenarios, evaluate their performance against department standards, and ensure they are prepared for independent duty. FTO certification is required for promotion to the rank of Corporal.</p>
+          </div>
+        </div>
+        <div class="div-card">
+          <div class="div-card-head"><div><h3>Bicycle Patrol</h3><p>Field Operations Bureau — Policy #008</p></div></div>
+          <div class="div-card-body">
+            <p>The Bicycle Patrol program enhances community relations and provides increased patrol coverage in areas difficult for motor vehicles to access. Officers assigned to bicycle patrol cover parks, trails, beaches, residential areas, and business districts while engaging positively with community members.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1406,7 +1473,6 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
       <ul>
         <li><a href="#" onclick="navigate('fleet')">Fleet & Motorpool</a></li>
         <li><a href="#" onclick="navigate('divisions')">Divisions</a></li>
-        <li><a href="#" onclick="navigate('certifications')">Certifications</a></li>
         <li><a href="#" onclick="navigate('stats')">Statistics</a></li>
       </ul>
     </div>
