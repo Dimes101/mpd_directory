@@ -733,15 +733,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
     <button class="nav-toggle" onclick="toggleNav()"><span></span><span></span><span></span></button>
     <ul class="nav-menu" id="navMenu">
       <button class="mobile-close" onclick="toggleNav()">×</button>
-      <li>
-        <span class="nav-trigger" onclick="navigate('about')">Your MPD <span class="nav-arrow">▼</span></span>
-        <div class="mega-dropdown">
-          <a class="mega-featured" onclick="navigate('about')"><span>About the Department</span></a>
-          <a onclick="navigate('staff')">Org Chart</a>
-          <a onclick="navigate('join')">Join the MPD</a>
-          <a onclick="navigate('divisions')">Divisions & Units</a>
-        </div>
-      </li>
+      <li><a href="#" data-page="about" onclick="navigate('about')">About</a></li>
+      <li><a href="#" data-page="staff" onclick="navigate('staff')">Our Staff</a></li>
       <li>
         <span class="nav-trigger">Resources <span class="nav-arrow">▼</span></span>
         <div class="mega-dropdown">
@@ -751,10 +744,8 @@ body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSf7Twa5yULi1CMUZzxbnmVy75Ojudz2zZgDmkGWJidu5oLbuw/viewform" target="_blank">Patrol Log</a>
         </div>
       </li>
-      <li><a href="#" data-page="staff" onclick="navigate('staff')">Our Staff</a></li>
       <li><a href="#" data-page="divisions" onclick="navigate('divisions')">Divisions</a></li>
       <li><a href="#" data-page="join" onclick="navigate('join')">Join Us</a></li>
-      <li><a href="#" onclick="navigate('documents')">Contact</a></li>
     </ul>
   </div>
 </nav>
